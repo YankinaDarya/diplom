@@ -1,0 +1,27 @@
+.h2 {
+    color: #ffd700;
+    text-shadow: 0 0 5px black;
+    font-size: 32px;
+}
+
+.dataBlock {
+    box-shadow: 0 0 2px 2px gray;
+    border-radius: 2px;
+    display: flex;
+    background-color: white;
+    width: 95%;
+    align-items: center;
+}
+
+.img {
+    height: 200px;
+    margin: 10px;
+}
+
+.info {
+    font-size: 24px;
+}
+
+.item {
+    margin: 15px;
+}

@@ -1,0 +1,25 @@
+.header {
+    grid-area: h;
+    border-bottom: 2px solid #ffa100;
+}
+
+.logo {
+    height: 60px;
+    margin: 10px 40px;
+}
+
+.outBlock {
+    float: right;
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+}
+
+button {
+    margin-left: 40px;
+}
+
+.avatar {
+    height: 60px;
+    border-radius: 50%;
+}
