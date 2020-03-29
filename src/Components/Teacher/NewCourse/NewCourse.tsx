@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
-import styles from './Settings.module.scss';
+import styles from './NewCourse.module.scss';
 import {Form, Field} from 'react-final-form';
 import {connect} from 'react-redux';
 import {
@@ -43,8 +43,9 @@ const formFields = [
     {
         field: (
             <TextField
-                label="ФИО"
-                name="fullName"
+                id="standard-full-width"
+                label="Название"
+                name="courseName"
                 margin="none"
                 required={true}
             />
@@ -53,8 +54,8 @@ const formFields = [
     {
         field: (
             <TextField
-                label="Дата Рождения"
-                name="birthday"
+                label="Краткая информация о курсе"
+                name="info"
                 margin="none"
                 required={true}
             />
@@ -63,8 +64,8 @@ const formFields = [
     {
         field: (
             <TextField
-                label="Паспортные данные"
-                name="passport"
+                label="Время проведения"
+                name="time"
                 margin="none"
                 required={true}
             />
@@ -73,28 +74,8 @@ const formFields = [
     {
         field: (
             <TextField
-                label="СНИЛС"
-                name="snils"
-                margin="none"
-                required={true}
-            />
-        ),
-    },
-    {
-        field: (
-            <TextField
-                label="Кафедра"
-                name="department"
-                margin="none"
-                required={true}
-            />
-        ),
-    },
-    {
-        field: (
-            <TextField
-                label="Адресс"
-                name="address"
+                label="Место проведения"
+                name="place"
                 margin="none"
                 required={true}
             />
@@ -102,46 +83,35 @@ const formFields = [
     },
 ];
 
-
-const Settings = ({fullName, birthDate, department, passport,
-                      snils, address, setNewData}:
+const NewCourse = ({setNewData}:
                       PropsType): JSX.Element => {
     const onSubmit = async values => {
-        setNewData(values);
+
+        /*setNewData(values);*/
     };
     return (
         <div className={cn(COMPONENT_STYLE_NAME)}>
-            <h1 className={cn(`${COMPONENT_STYLE_NAME}__label`)}>Настройки</h1>
+            <h1 className={cn(`${COMPONENT_STYLE_NAME}__label`)}>Новый курс</h1>
             <Form
                 onSubmit={onSubmit}
-                initialValues={{
-                    fullName: `${fullName}`,
-                    birthday: `${birthDate}`,
-                    department: `${department}`,
-                    passport: `${passport}`,
-                    snils: `${snils}`,
-                    address: `${address}`,
-                }}
                 render={({handleSubmit, submitting, pristine, values}) => (
                     <form onSubmit={handleSubmit} noValidate>
                         <Paper style={{padding: 16}}>
-                            <Grid container alignItems="flex-start" spacing={2}>
                                 {formFields.map((item, idx) => (
                                     <Grid item key={idx}>
                                         {item.field}
                                     </Grid>
                                 ))}
-                                <Grid item style={{marginTop: 16}}>
+                                <div style={{marginTop: 16}}>
                                     <Button
                                         variant="contained"
                                         color="secondary"
                                         type="submit"
                                         disabled={submitting}
                                     >
-                                        Изменить
+                                        Создать
                                     </Button>
-                                </Grid>
-                            </Grid>
+                                </div>
                         </Paper>
                     </form>
                 )}
@@ -161,4 +131,4 @@ const mapStateToProps = (state: any): MapStatePropsType => {
     }
 };
 
-export default connect(mapStateToProps, {setNewData})(Settings);
+export default connect(mapStateToProps, {setNewData})(NewCourse);

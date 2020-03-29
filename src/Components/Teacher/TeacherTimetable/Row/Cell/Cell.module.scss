@@ -1,0 +1,11 @@
+.Table-cell {
+  border: 1px solid black;
+  text-align: center;
+  cursor: pointer;
+  &--lecture {
+    background-color: #ffa0eb;
+  }
+  &--seminar {
+    background-color: #3dddff;
+  }
+}

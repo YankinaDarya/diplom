@@ -1,0 +1,20 @@
+.Table-block {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 40px;
+  &__label {
+    margin-left: 70px;
+  }
+  &__table {
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__button {
+    width: 300px;
+    margin-top: 40px;
+    margin-left: 70px;
+  }
+}

@@ -47,8 +47,16 @@ export const teacherReducer = (state = initialState, action: any):
             return {
                 ...state,
                 fullName: action.data.fullName ? action.data.fullName : state.fullName,
-                birthDate: action.data.birthDate ? action.data.birthDate : state.birthDate,
-                department: action.data.department ? action.data.department : state.department
+                birthDate: action.data.birthday ? action.data.birthday : state.birthDate,
+                department: action.data.department ? action.data.department : state.department,
+                passport: action.data.passport ? action.data.passport : state.passport,
+                snils: action.data.snils ? action.data.snils : state.snils,
+                address: action.data.address ? action.data.address : state.address,
+                /*contacts: {
+                    email: action.data.email ? action.data.email : state.contacts.email,
+                    telephone: action.data.telephone ? action.data.telephone : state.contacts.telephone,
+                    telegram: action.data.telegram ? action.data.telegram : state.contacts.telegram,
+                },*/
             };
         default:
             return state;

@@ -1,5 +1,12 @@
 .Settings {
-  border: 1px solid red;
+  &__label {
+
+  }
+  display: flex;
+  flex-direction: column;
+  padding-left: 100px;
+  padding-top: 20px;
+  width: 240px;
   &__span {
     font-size: 54px;
     color: blue;
