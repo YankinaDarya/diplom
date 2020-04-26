@@ -1,41 +1,117 @@
 import React from 'react';
-import style from './CoursePage.module.css';
-import web from '../../../images/web.jpg';
+import {connect} from 'react-redux';
+import {RouteComponentProps} from 'react-router-dom';
+import styles from './CoursePage.module.scss';
 import Accordion from "../../Common/Accordion/Accordion";
 import StudentsTable from "./StudentsTable/StudentsTable";
+import {CourseType, sendNotificationAction} from "../../../redux/Teacher/TeacherCoursesReducer";
+import { TextField } from 'final-form-material-ui';
+import {Form, Field} from "react-final-form";
+import {Button} from "@material-ui/core";
+import classNames from "classnames/bind";
 
-const CoursePage = () => {
-    return (
-        <div className={style.cabinetWrapper}>
-            <h1 className={style.h1}>
-                Вэб-разработка
-            </h1>
-            <div className={style.dataBlock}>
-                <img src={web} alt="web" className={style.img}/>
-                <div className={style.info}>
-                    <div className={style.item}><h4>Информация о курсе:</h4> В первой четверти вы углубитесь в верстку на
-                        HTML/CSS и приступите к изучению JavaScript: познакомитесь с основами
-                        языка, операторами, циклами, массивами и объектами, научитесь работать
-                        с браузерными событиями: кликом мышки, прокруткой, отправкой формы.
-                        На продвинутом курсе продолжите погружение в язык, познакомитесь с
-                        объектно-ориентированным программированием, тестированием и
-                        фреймворком Vue.js.</div>
-                    <div className={style.item}><h4>Время и место проведения:</h4> Тимирязевская, 9643 ауд. четверг, 15.30 </div>
-                    <div className={style.item}><h4>Лектор:</h4> Иван Иванович Иванов </div>
-                    <div className={style.item}><h4>План занятий:</h4> <Accordion /></div>
-                    <div className={style.item}><h4>Список студентов:</h4>
-                        <StudentsTable />
-                    </div>
-                </div>
-            </div>
-            <h2>Объявления:</h2>
-            <div className={style.dataBlock}>
-                <div className={style.info}>
-                <div className={style.item}>В этот четверг занятия отменяются по причине болезни преподавателя</div>
-                </div>
-            </div>
-        </div>
-    );
+const cn = classNames.bind(styles);
+const COMPONENT_STYLE_NAME = 'Сourse-page';
+
+type ReduxType = {
+    courses?: Array<CourseType>;
 };
 
-export default CoursePage;
+type MapDispatchToPropsType = {
+    sendNotificationAction?: (values: string, courseId: number) => void;
+};
+
+type RouterProps = {
+    id?: string;
+};
+type PropsType = ReduxType & RouterProps & MapDispatchToPropsType;
+
+class CoursePageView extends React.PureComponent<PropsType, {}> {
+    render() {
+        const courseId = Number(this.props.id);
+        if(this.props.courses !== undefined) {
+            const courseInfo = this.props.courses.find(course => course.id === courseId);
+            if (courseInfo !== undefined) {
+                const {name, imgUrl, info, time, place, teacher, plan, students, notifications} = courseInfo;
+                const onMySubmit = (values) => {
+                    if(this.props.sendNotificationAction !== undefined) {
+                        this.props.sendNotificationAction(values, courseId);
+                    }
+                };
+                return (
+                    <div className={cn(COMPONENT_STYLE_NAME)}>
+                        <h1 className={cn(`${COMPONENT_STYLE_NAME}__h1`)}>
+                            {name}
+                        </h1>
+                        <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
+                            <img src={imgUrl} alt="web" className={cn(`${COMPONENT_STYLE_NAME}__img`)}/>
+                            <div className={cn(`${COMPONENT_STYLE_NAME}__info`)}>
+                                <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}><h4>Информация о курсе:</h4>
+                                    {info}
+                                </div>
+                                <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}><h4>Время и место
+                                    проведения:</h4> {place},
+                                    {time}
+                                </div>
+                                <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}><h4>Лектор:</h4>
+                                    {teacher}
+                                </div>
+                                <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>
+                                    <h4>План занятий:</h4>
+                                    <Accordion plan={plan}/>
+                                </div>
+                                <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}><h4>Список студентов:</h4>
+                                    <StudentsTable students={students}/>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 className={cn(`${COMPONENT_STYLE_NAME}__title`)}>Объявления:</h2>
+                        {notifications.map(item => <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
+                            <div className={cn(`${COMPONENT_STYLE_NAME}__info`)}>
+                                <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>{item}</div>
+                            </div>
+                        </div>)}
+                        <div className={cn(`${COMPONENT_STYLE_NAME}__form-container`)}>
+                            <Form
+                                onSubmit={onMySubmit}
+                                render={({handleSubmit, submitting, pristine, values}) => (
+                                    <form onSubmit={handleSubmit} noValidate>
+                                        <Field
+                                            fullWidth
+                                            name="notification"
+                                            component={TextField}
+                                            type="text"
+                                            rows={6}
+                                            label="Введите объявление"
+                                            id="outlined-multiline-static"
+                                            multiline
+                                            variant="outlined"
+                                        />
+                                        <div className={cn(`${COMPONENT_STYLE_NAME}__submit-button`)}>
+                                            <Button
+                                                variant="contained"
+                                                color="secondary"
+                                                type="submit"
+                                                disabled={submitting}
+                                            >
+                                                Отправить
+                                            </Button>
+                                        </div>
+                                    </form>
+                                )}
+                            />
+                        </div>
+                    </div>
+                );
+            }
+        }
+    }
+}
+
+
+const mapStateToProps = (state: any, ownProps: RouteComponentProps<RouterProps>): PropsType => ({
+    courses: state.teacherCoursesReducer.courses,
+    id: ownProps.match.params.id,
+});
+
+export default connect(mapStateToProps, {sendNotificationAction})(CoursePageView);

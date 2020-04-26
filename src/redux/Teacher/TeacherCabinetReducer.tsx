@@ -2,6 +2,7 @@ import {Contacts} from '../../types/types';
 
 const SET_TEACHER_DATA = 'SET_TEACHER_DATA';
 const SET_NEW_DATA = 'SET_NEW_DATA';
+const SET_TEACHER_IS_AUTH = 'SET_TEACHER_IS_AUTH';
 
 type StateType = {
     id: number | null;
@@ -16,6 +17,7 @@ type StateType = {
     position: string | null;
     rate: string | null;
     scienceDegree: string | null;
+    teacherIsAuth: boolean;
 };
 
 const initialState = {
@@ -32,13 +34,19 @@ const initialState = {
     position: 'старший преподаватель',
     rate: 'полная',
     scienceDegree : 'доктор математических наук',
+    teacherIsAuth: false,
 };
 
 type InitialState = typeof initialState;
 
-export const teacherReducer = (state = initialState, action: any):
+type ActionsType = {
+    type: string;
+    payload?: any;
+};
+
+export const teacherReducer = (state = initialState, {type, payload}: ActionsType,):
     InitialState => {
-    switch (action.type) {
+    switch (type) {
         case SET_TEACHER_DATA:
             return {
                 ...state,
@@ -46,17 +54,21 @@ export const teacherReducer = (state = initialState, action: any):
         case SET_NEW_DATA:
             return {
                 ...state,
-                fullName: action.data.fullName ? action.data.fullName : state.fullName,
-                birthDate: action.data.birthday ? action.data.birthday : state.birthDate,
-                department: action.data.department ? action.data.department : state.department,
-                passport: action.data.passport ? action.data.passport : state.passport,
-                snils: action.data.snils ? action.data.snils : state.snils,
-                address: action.data.address ? action.data.address : state.address,
+                fullName: payload.data.fullName ? payload.data.fullName : state.fullName,
+                birthDate: payload.data.birthday ? payload.data.birthday : state.birthDate,
+                department: payload.data.department ? payload.data.department : state.department,
+                passport: payload.data.passport ? payload.data.passport : state.passport,
+                snils: payload.data.snils ? payload.data.snils : state.snils,
+                address: payload.data.address ? payload.data.address : state.address,
                 /*contacts: {
                     email: action.data.email ? action.data.email : state.contacts.email,
                     telephone: action.data.telephone ? action.data.telephone : state.contacts.telephone,
                     telegram: action.data.telegram ? action.data.telegram : state.contacts.telegram,
                 },*/
+            };
+        case SET_TEACHER_IS_AUTH:
+            return {
+                ...state, teacherIsAuth: payload,
             };
         default:
             return state;
@@ -64,3 +76,4 @@ export const teacherReducer = (state = initialState, action: any):
 };
 
 export const setNewData = (data: any) => ({type: SET_NEW_DATA, data});
+export const setTeacherIsAuth = (payload: boolean) => ({type: SET_TEACHER_IS_AUTH, payload});

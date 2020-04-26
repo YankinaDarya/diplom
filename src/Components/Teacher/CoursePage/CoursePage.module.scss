@@ -1,0 +1,46 @@
+.Сourse-page {
+    padding-top: 20px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    &__h1 {
+        font-size: 36px;
+    }
+    &__title {
+        color: #1976d2;
+        text-shadow: 0 0 1px gray;
+        font-size: 32px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        font-style: italic;
+    }
+    &__data-block {
+        box-shadow: 0 0 3px 3px #9f9f9f;
+        border: 2px solid #4a4a4a;
+        border-radius: 2px;
+        background-color: white;
+        width: 95%;
+        padding: 10px;
+    }
+    &__img {
+        height: 200px;
+        margin: 10px;
+    }
+    &__info {
+        font-size: 24px;
+    }
+    &__item {
+        margin: 15px;
+    }
+    &__form-container {
+        box-shadow: 0 0 3px 3px #9f9f9f;
+        border: 2px solid #4a4a4a;
+        border-radius: 2px;
+        background-color: white;
+        width: 94%;
+        padding: 20px;
+        margin-top: 30px;
+    }
+    &__submit-button {
+        margin-top: 20px;
+    }
+}

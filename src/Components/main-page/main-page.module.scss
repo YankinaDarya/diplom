@@ -1,0 +1,30 @@
+.Main-page {
+  background-color: #3914AF;
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  &__content {
+    position: relative;
+    width: 1200px;
+    background-color: white;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  &__logo {
+    width: 350px;
+    margin-top: 50px;
+  }
+  &__text {
+    margin-top: 50px;
+    font-size: 28px;
+    font-style: italic;
+  }
+  &__tabs-container {
+    margin-top: 50px;
+  }
+}

@@ -1,0 +1,35 @@
+.Teacher-cabinet {
+    padding-top: 20px;
+    padding-left: 50px;
+    &__header {
+        font-size: 36px;
+    }
+    &__title {
+        color: #1976d2;
+        text-shadow: 0 0 1px gray;
+        font-size: 32px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        font-style: italic;
+    }
+    &__data-block {
+        box-shadow: 0 0 3px 3px #9f9f9f;
+        border: 2px solid #4a4a4a;
+        border-radius: 2px;
+        display: flex;
+        background-color: white;
+        width: 95%;
+        align-items: center;
+    }
+    &__avatar {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+    }
+    &__info {
+        font-size: 24px;
+    }
+    &__list {
+        font-size: 24px;
+    }
+}

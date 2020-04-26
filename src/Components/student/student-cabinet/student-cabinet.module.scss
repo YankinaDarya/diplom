@@ -1,0 +1,31 @@
+.Teacher-cabinet {
+    padding-top: 20px;
+    padding-left: 50px;
+    &__header {
+        font-size: 36px;
+    }
+    &__title {
+        color: #1976d2;
+        text-shadow: 0 0 1px #000;
+        font-size: 32px;
+    }
+    &__data-block {
+        box-shadow: 0 0 2px 2px gray;
+        border-radius: 2px;
+        display: flex;
+        background-color: white;
+        width: 95%;
+        align-items: center;
+    }
+    &__avatar {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+    }
+    &__info {
+        font-size: 24px;
+    }
+    &__list {
+        font-size: 24px;
+    }
+}

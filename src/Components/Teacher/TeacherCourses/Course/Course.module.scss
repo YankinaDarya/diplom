@@ -1,0 +1,30 @@
+.Course-block {
+    &__title {
+        font-style: italic;
+        text-shadow: 0 0 1px gray;
+        color: #1976d2;
+        font-size: 32px;
+    }
+    &__data-block {
+        box-shadow: 0 0 3px 3px #9f9f9f;
+        border: 2px solid #4a4a4a;
+        border-radius: 2px;
+        display: flex;
+        background-color: white;
+        width: 95%;
+        align-items: center;
+    }
+    &__image {
+        height: 200px;
+        margin: 10px;
+    }
+    &__info {
+        font-size: 24px;
+    }
+    &__item {
+        margin: 15px;
+    }
+    &__text {
+        margin-left: 10px;
+    }
+}

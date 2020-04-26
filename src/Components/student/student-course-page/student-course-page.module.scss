@@ -1,0 +1,43 @@
+.student-сourse {
+  padding-top: 25px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  &__header-container {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 95%;
+  }
+  &__h1 {
+    font-size: 36px;
+  }
+  &__mark {
+    font-size: 24px;
+    color: #812784;
+  }
+  &__data-block {
+    box-shadow: 0 0 2px 2px gray;
+    border-radius: 2px;
+    background-color: white;
+    width: 95%;
+    padding: 10px;
+  }
+  &__img {
+    height: 200px;
+    margin: 10px;
+  }
+  &__info {
+    font-size: 24px;
+  }
+  &__item {
+    margin: 15px;
+  }
+  &__form-container {
+    width: 95%;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  &__submit-button {
+    margin-top: 20px;
+  }
+}

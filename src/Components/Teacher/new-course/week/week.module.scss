@@ -1,0 +1,40 @@
+.Week {
+  font-size: 20px;
+  font-style: italic;
+  padding-top: 25px;
+  &__field-container {
+    width: 500px;
+    margin-top: 20px;
+  }
+  &__upload {
+    color: #1976d2;
+    cursor: pointer;
+    margin-right: 10px;
+    &:hover {
+      color: #01579b;
+    }
+  }
+  &__upload-block {
+    margin-top: 15px;
+    text-align: center;
+    width: 150px;
+  }
+  &__url {
+    margin-top: 10px;
+  }
+  &__close-icon {
+    margin-left: 15px;
+    cursor: pointer;
+  }
+  &__input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  &__upload-text {
+    font-size: 14px;
+  }
+}

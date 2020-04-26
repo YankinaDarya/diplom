@@ -1,0 +1,38 @@
+.uploadBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo {
+  cursor: pointer;
+  height: 180px;
+  margin-left: 40px;
+}
+
+.text {
+  margin-left: 70px;
+}
+
+.image {
+  margin-top: 10px;
+}
+
+.closeIcon {
+  margin-left: 5px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 180px;
+}
+
+.input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}

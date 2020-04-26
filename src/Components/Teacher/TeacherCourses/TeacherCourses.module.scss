@@ -1,0 +1,23 @@
+.All-courses-page {
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-bottom: 50px;
+    &__h1 {
+        font-size: 36px;
+        color: black;
+    }
+    &__add-course-block {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-top: 40px;
+    }
+    &__add-course-text {
+        font-size: 24px;
+        margin-left: 20px;
+        color: #1976d2;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

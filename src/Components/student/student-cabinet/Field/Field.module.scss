@@ -1,0 +1,17 @@
+.Field {
+  padding: 15px;
+  position: relative;
+  &:hover .Field__edit-icon{
+    visibility: visible;
+  }
+  &__input-container {
+    margin-left: 10px;
+  }
+  &__edit-icon {
+    margin-left: 15px;
+    visibility: hidden;
+  }
+  &__data {
+    margin-left: 10px;
+  }
+}

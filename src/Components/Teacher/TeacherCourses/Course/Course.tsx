@@ -1,25 +1,43 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import style from './Course.module.css';
-import web from '../../../../images/web.jpg';
+import styles from './Course.module.scss';
+import { CourseType } from '../../../../redux/Teacher/TeacherCoursesReducer';
+import classNames from "classnames/bind";
 
-const Course = () => {
+const cn = classNames.bind(styles);
+const COMPONENT_STYLE_NAME = 'Course-block';
+
+type PropsType = {
+    course: CourseType;
+};
+
+const Course = ({course}: PropsType): JSX.Element => {
+    const {id, name, imgUrl, info, time, place, teacher} = course;
     return (
-        <div>
-            <h2 className={style.h2}>Вэб-разработка</h2>
-            <div className={style.dataBlock}>
-                <img src={web} alt="web" className={style.img}/>
-                <div className={style.info}>
-                    <div className={style.item}><i>Информация о курсе:</i> В первой четверти вы углубитесь в верстку на
-                        HTML/CSS и приступите к изучению JavaScript: познакомитесь с основами
-                        языка, операторами, циклами, массивами и объектами, научитесь работать
-                        с браузерными событиями: кликом мышки, прокруткой, отправкой формы.
-                        На продвинутом курсе продолжите погружение в язык, познакомитесь с
-                        объектно-ориентированным программированием, тестированием и
-                        фреймворком Vue.js.</div>
-                    <div className={style.item}><i>Время и место проведения:</i> Тимирязевская, 9643 ауд. четверг, 15.30 </div>
-                    <div className={style.item}><i>Лектор:</i> Иван Иванович Иванов </div>
-                    <div className={style.item}><Link to='/courses/web'>Подробнее</Link> </div>
+        <div className={cn(COMPONENT_STYLE_NAME)}>
+            <h2 className={cn(`${COMPONENT_STYLE_NAME}__title`)}>{name}</h2>
+            <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
+                <img src={imgUrl} alt="web"
+                     className={cn(`${COMPONENT_STYLE_NAME}__image`)} />
+                <div className={cn(`${COMPONENT_STYLE_NAME}__info`)}>
+                    <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>
+                        <i>Информация о курсе:</i>
+                        <span className={cn(`${COMPONENT_STYLE_NAME}__text`)}>
+                            {info}
+                        </span>
+                    </div>
+                    <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>
+                        <i>Время и место проведения:</i>
+                        <span className={cn(`${COMPONENT_STYLE_NAME}__text`)}>
+                            {place}, {time}
+                        </span>
+                    </div>
+                    <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>
+                        <i>Лектор:</i>
+                        <span className={cn(`${COMPONENT_STYLE_NAME}__text`)}> {teacher} </span>
+                    </div>
+                    <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>
+                        <Link to={`/course/${id}`}>Подробнее</Link> </div>
                 </div>
             </div>
         </div>

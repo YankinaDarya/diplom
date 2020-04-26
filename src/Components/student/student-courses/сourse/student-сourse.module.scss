@@ -1,0 +1,27 @@
+.student-сourse {
+    &__title {
+        color: #1976d2;
+        font-size: 32px;
+    }
+    &__data-block {
+        box-shadow: 0 0 2px 2px gray;
+        border-radius: 2px;
+        display: flex;
+        background-color: white;
+        width: 95%;
+        align-items: center;
+    }
+    &__image {
+        height: 200px;
+        margin: 10px;
+    }
+    &__info {
+        font-size: 24px;
+    }
+    &__item {
+        margin: 15px;
+    }
+    &__text {
+        margin-left: 10px;
+    }
+}

@@ -1,0 +1,32 @@
+.New-course {
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-bottom: 50px;
+  &__h1 {
+    font-size: 36px;
+    color: black;
+  }
+  &__form-container {
+    box-shadow: 0 0 3px 3px #9f9f9f;
+    border: 2px solid #4a4a4a;
+    border-radius: 2px;
+    background-color: white;
+    width: 94%;
+    padding: 20px;
+    margin-top: 30px;
+  }
+  &__submit-button {
+    margin-top: 40px;
+  }
+  &__field-container {
+    margin-top: 15px;
+  }
+  &__plan-header {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &__main-container {
+    display: flex;
+  }
+}

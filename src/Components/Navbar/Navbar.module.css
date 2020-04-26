@@ -1,14 +1,15 @@
 .nav {
     grid-area: n;
     padding: 20px;
-    background: linear-gradient(to bottom, rgba(255, 190, 0, 0.7), rgba(255, 168, 0, 0.7));
-    border-right: 3px solid #ffa100;
+    background-color: #1976d2;
+    /*background: linear-gradient(to bottom, rgba(255, 190, 0, 0.7), rgba(255, 168, 0, 0.7));
+    */border-right: 3px solid #01579b;
 }
 
 .item a {
     font-size: 28px;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .item {
@@ -16,7 +17,8 @@
 }
 
 .item a.activeLink {
-    color: #ff0034;
+    color: #ffef62;
+        /*color: #FFDE40;*/
 }
 
 .menuBlock {
