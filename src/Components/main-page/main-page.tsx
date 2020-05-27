@@ -6,9 +6,6 @@ import {LoginTabs} from "./tabs/tabs";
 import {getTeacherIsAuth} from "../../redux/Teacher/selectors/teacher-cabinet-selector";
 import {getStudentIsAuth} from "../../redux/student/cabinet-module/selectors";
 import {connect} from "react-redux";
-import { Redirect } from 'react-router-dom';
-import {setTeacherIsAuth} from "../../redux/Teacher/TeacherCabinetReducer";
-import {setStudentIsAuth} from "../../redux/student/cabinet-module/reducer";
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Main-page';
@@ -42,5 +39,5 @@ const mapStateToProps = (state) => {
     }
 };
 
-export const MainPage = connect(mapStateToProps, {setTeacherIsAuth, setStudentIsAuth})(MainPageView);
+export const MainPage = connect(mapStateToProps)(MainPageView);
 

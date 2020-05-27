@@ -9,3 +9,8 @@ export const getTeacherIsAuth = createSelector(getTeacherInfo,
     (teacherInfo) => {
         return teacherInfo.teacherIsAuth;
     });
+
+export const getTeacherId = createSelector(getTeacherInfo,
+    (teacherInfo) => {
+        return teacherInfo.teacherId;
+    });

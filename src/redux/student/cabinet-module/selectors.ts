@@ -10,6 +10,11 @@ export const getStudentIsAuth = createSelector(getStudentInfo,
         return studentInfo.studentIsAuth;
     });
 
+export const getStudentId = createSelector(getStudentInfo,
+    (studentInfo) => {
+        return studentInfo.studentId;
+    });
+
 export const getStudentName = createSelector(getStudentInfo,
     (studentInfo) => {
         return studentInfo.fullName

@@ -4,28 +4,35 @@ import style from './Header.module.scss';
 import logo from '../../images/lms4.png';
 import prep from '../../images/prep.jpg';
 import { connect } from 'react-redux';
-import { getTeacherIsAuth } from '../../redux/Teacher/selectors/teacher-cabinet-selector';
-import {setTeacherIsAuth} from "../../redux/Teacher/TeacherCabinetReducer";
-import {getStudentIsAuth} from "../../redux/student/cabinet-module/selectors";
-import {setStudentIsAuth} from "../../redux/student/cabinet-module/reducer";
-import { Redirect } from 'react-router-dom';
+import {getTeacherId, getTeacherIsAuth} from '../../redux/Teacher/selectors/teacher-cabinet-selector';
+import {getStudentId, getStudentIsAuth} from "../../redux/student/cabinet-module/selectors";
+import {getAdminId, getAdminIsAuth} from "../../redux/admin/selectors";
+import {logoutThunk} from "../../redux/auth/thunks";
 
 type PropsType = {
+    logout: (id: number) => void;
+    teacherId: number;
+    studentId: number;
+    adminId: number;
     teacherIsAuth: boolean;
     studentIsAuth: boolean;
-    setTeacherIsAuth: any;
-    setStudentIsAuth: any;
+    adminIsAuth: boolean;
 };
 
-const HeaderView = ({teacherIsAuth, studentIsAuth,
-                        setStudentIsAuth, setTeacherIsAuth}: PropsType) => {
+const HeaderView = ({logout, teacherId, studentId,
+                        adminId, studentIsAuth,
+                        teacherIsAuth, adminIsAuth}: PropsType) => {
     const resetAuthorization = () => {
-        setStudentIsAuth(false);
-        setTeacherIsAuth(false);
+        if(studentIsAuth) {
+            logout(studentId);
+        }
+        else if(teacherIsAuth) {
+            logout(teacherId);
+        }
+        else if(adminIsAuth) {
+            logout(adminId);
+        }
     };
-    if(!teacherIsAuth && !studentIsAuth) {
-        return <Redirect to={"/"} />;
-    }
     return (
         <header className={style.header}>
             <img src={logo} alt="logo" className={style.logo}/>
@@ -42,9 +49,13 @@ const HeaderView = ({teacherIsAuth, studentIsAuth,
 
 const mapStateToProps = (state) => {
     return {
+        teacherId: getTeacherId(state),
+        studentId: getStudentId(state),
+        adminId: getAdminId(state),
         teacherIsAuth: getTeacherIsAuth(state),
         studentIsAuth: getStudentIsAuth(state),
+        adminIsAuth: getAdminIsAuth(state),
     }
 };
 
-export const Header = connect(mapStateToProps, {setTeacherIsAuth, setStudentIsAuth})(HeaderView);
+export const Header = connect(mapStateToProps, {logout: logoutThunk})(HeaderView);

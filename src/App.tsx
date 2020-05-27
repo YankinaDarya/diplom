@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Route} from 'react-router-dom';
 import {Header} from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
@@ -19,23 +19,29 @@ import {NotificationPage} from "./Components/Teacher/notification-page/Notificat
 import { Messages } from './Components/Teacher/messages/messages';
 import StudentTimetable from "./Components/student/student-timetable/student-timetable";
 import { StudentNotifications } from './Components/student/student-notifications/student-notifications';
+import AdminCabinet from './Components/admin/admin-cabinet';
+import {getAdminIsAuth} from "./redux/admin/selectors";
+import {initializeAppThunk} from "./redux/app/thunks";
 
 type PropsType = {
     teacherIsAuth?: boolean;
     studentIsAuth?: boolean;
+    adminIsAuth?: boolean;
+    initializeApp: () => void;
 };
 
-const AppView = ({teacherIsAuth, studentIsAuth}: PropsType): JSX.Element => {
-    console.log(studentIsAuth);
+const AppView = ({teacherIsAuth, studentIsAuth, adminIsAuth, initializeApp}: PropsType) => {
+    useEffect(() => initializeApp(), []);
     return (
         <>
-            {!studentIsAuth && !teacherIsAuth &&  <Route exact path="/" render={() => <MainPage/>}/>}
+            {!studentIsAuth && !teacherIsAuth && !adminIsAuth &&
+             <Route exact path="/" render={() => <MainPage/>}/>}
             {teacherIsAuth &&
             (<div className={style.appWrapper}>
                 <Header/>
                 <Navbar studentIsAuth={false} teacherIsAuth={true}/>
                 <div className={style.appWrapperContent}>
-                    <Route exact path="/cabinet" render={() => <TeacherCabinet/>}/>
+                    <Route exact path="/" render={() => <TeacherCabinet/>}/>
                     <Route exact path="/courses" render={() => <TeacherCourses/>}/>
                     <Route exact path="/course/:id?"
                            render={(props) => <CoursePage {...props} />}/>
@@ -50,7 +56,7 @@ const AppView = ({teacherIsAuth, studentIsAuth}: PropsType): JSX.Element => {
                 <Header/>
                 <Navbar studentIsAuth={true} teacherIsAuth={false}/>
                 <div className={style.appWrapperContent}>
-                    <Route exact path="/student/cabinet" render={() => <StudentCabinet/>}/>
+                    <Route exact path="/" render={() => <StudentCabinet/>}/>
                     <Route exact path="/student/courses" render={() => <StudentCourses/>}/>
                     <Route exact path="/student/course/:id?"
                            render={(props) => <StudentCoursePage {...props} />}/>
@@ -58,6 +64,11 @@ const AppView = ({teacherIsAuth, studentIsAuth}: PropsType): JSX.Element => {
                     <Route exact path="/student/notifications" render={() => <StudentNotifications/>}/>
                 </div>
             </div>)}
+            {adminIsAuth && (<div>
+                <Header/>
+                <Route exact path="/" render={() => <AdminCabinet/>}/>
+            </div>)
+            }
         </>
     );
 };
@@ -66,7 +77,9 @@ const mapStateToProps = (state) => {
     return {
         teacherIsAuth: getTeacherIsAuth(state),
         studentIsAuth: getStudentIsAuth(state),
+        adminIsAuth: getAdminIsAuth(state),
     };
 };
 
-export const App = connect(mapStateToProps, null)(AppView);
+export const App = connect(mapStateToProps,
+    {initializeApp: initializeAppThunk})(AppView);

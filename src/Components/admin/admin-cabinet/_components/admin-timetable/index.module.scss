@@ -1,0 +1,37 @@
+.Table-block {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  &__table-label {
+    font-size: 24px;
+    font-style: italic;
+  }
+  &__table-container {
+    width: 100%;
+  }
+  &__table {
+    box-shadow: 0 0 2px 2px gray;
+    border-radius: 2px;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+  }
+  &__buttons-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__buttons {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  &__reject-field-container {
+    margin-top: 20px;
+  }
+  &__submit-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+}

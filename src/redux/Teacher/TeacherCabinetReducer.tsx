@@ -1,39 +1,22 @@
-import {Contacts} from '../../types/types';
-
-const SET_TEACHER_DATA = 'SET_TEACHER_DATA';
-const SET_NEW_DATA = 'SET_NEW_DATA';
-const SET_TEACHER_IS_AUTH = 'SET_TEACHER_IS_AUTH';
-
-type StateType = {
-    id: number | null;
-    fullName: number | null;
-    birthDate: string | null;
-    passport: any;
-    snils: any;
-    department: string | null;
-    address: any;
-    contacts: Contacts | null;
-    courses: Array<string> | null;
-    position: string | null;
-    rate: string | null;
-    scienceDegree: string | null;
-    teacherIsAuth: boolean;
-};
+import {SET_TEACHER_ID_ACTION, SET_TEACHER_IS_AUTH, SET_NEW_TEACHER_DATA, SET_TEACHER_DATA} from './actions';
 
 const initialState = {
-    id: 1234,
-    fullName: 'Иван Иванович Иванов',
-    birthDate: '24.06.1975',
-    passport: '4521 203698',
-    snils: '123-546-789 32',
-    department: 'Корпоративных информационных систем',
-    address: '141707, Московская обл, г.Балашиха, ул.Ленина, дом № 34А, квартира 16',
-    contacts: {email: 'ivanov@mail.ru',
-        telephone: '+79856654120', telegram: '@Ivanov'},
-    courses: ['ВЭБ-разработка', 'ReactJS', 'Базы данных', 'Сети'],
-    position: 'старший преподаватель',
-    rate: 'полная',
-    scienceDegree : 'доктор математических наук',
+    teacherId: 0,
+    firstname: '',
+    midname: '',
+    lastname: '',
+    birthdate: '',
+    passport: '',
+    snils: '',
+    department: '',
+    address: '',
+    email: '',
+    telephone: '',
+    telegram: '',
+    courses: [],
+    position: '',
+    rate: '',
+    sciencedegree : '',
     teacherIsAuth: false,
 };
 
@@ -50,30 +33,48 @@ export const teacherReducer = (state = initialState, {type, payload}: ActionsTyp
         case SET_TEACHER_DATA:
             return {
                 ...state,
+                firstname: payload.firstname,
+                midname: payload.midname,
+                lastname: payload.lastname,
+                birthdate: payload.birthdate,
+                department: payload.department,
+                passport: payload.passport,
+                snils: payload.snils,
+                address: payload.address,
+                email: payload.email,
+                telephone: payload.phone,
+                telegram: payload.telegram,
+                position: payload.position,
+                rate: payload.rate,
+                sciencedegree: payload.sciencedegree,
             };
-        case SET_NEW_DATA:
+        case SET_NEW_TEACHER_DATA:
             return {
                 ...state,
-                fullName: payload.data.fullName ? payload.data.fullName : state.fullName,
-                birthDate: payload.data.birthday ? payload.data.birthday : state.birthDate,
-                department: payload.data.department ? payload.data.department : state.department,
-                passport: payload.data.passport ? payload.data.passport : state.passport,
-                snils: payload.data.snils ? payload.data.snils : state.snils,
-                address: payload.data.address ? payload.data.address : state.address,
-                /*contacts: {
-                    email: action.data.email ? action.data.email : state.contacts.email,
-                    telephone: action.data.telephone ? action.data.telephone : state.contacts.telephone,
-                    telegram: action.data.telegram ? action.data.telegram : state.contacts.telegram,
-                },*/
+                firstname: payload.firstname ? payload.firstname : state.firstname,
+                midname: payload.midname ? payload.midname : state.midname,
+                lastname: payload.lastname ? payload.lastname : state.lastname,
+                birthdate: payload.birthdate ? payload.birthdate : state.birthdate,
+                department: payload.department ? payload.department : state.department,
+                passport: payload.passport ? payload.passport : state.passport,
+                snils: payload.snils ? payload.snils : state.snils,
+                address: payload.address ? payload.address : state.address,
+                email: payload.email ? payload.email : state.email,
+                telephone: payload.phone ? payload.phone : state.telephone,
+                telegram: payload.telegram ? payload.telegram : state.telegram,
+                position: payload.position ? payload.position : state.position,
+                rate: payload.rate ? payload.rate : state.rate,
+                sciencedegree: payload.sciencedegree ? payload.sciencedegree : state.sciencedegree,
             };
         case SET_TEACHER_IS_AUTH:
             return {
                 ...state, teacherIsAuth: payload,
             };
+        case SET_TEACHER_ID_ACTION:
+            return {
+                ...state, teacherId: payload,
+            };
         default:
             return state;
     }
 };
-
-export const setNewData = (data: any) => ({type: SET_NEW_DATA, data});
-export const setTeacherIsAuth = (payload: boolean) => ({type: SET_TEACHER_IS_AUTH, payload});

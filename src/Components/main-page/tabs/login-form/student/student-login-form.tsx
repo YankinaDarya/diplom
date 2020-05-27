@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Field, Form} from "react-final-form";
 import {TextField} from "final-form-material-ui";
 import {Button, Grid} from "@material-ui/core";
@@ -7,23 +7,25 @@ import styles from "./student-login-form.module.scss";
 import {AccountCircle} from "@material-ui/icons";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import {connect} from "react-redux";
-import {setStudentIsAuth} from "../../../../../redux/student/cabinet-module/reducer";
+import { Action } from '../../../../../types/types';
+import {loginThunk} from "../../../../../redux/auth/thunks";
+import {adminLoginType} from "../../../../../redux/admin/types";
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Student-login';
 
 type PropsType = {
-    setStudentIsAuth: any;
+    loginStudent: ({login, password}: adminLoginType) => void;
 };
 
-export const StudentLoginFormView = ({setStudentIsAuth}: PropsType) => {
-    const authorizeStudent = () => {
-        setStudentIsAuth(true);
-    };
+export const StudentLoginFormView = ({loginStudent}: PropsType) => {
+    const authorizeStudent = useCallback((values) => {
+        loginStudent(values);
+    }, [loginStudent]);
     return(
         <div className={cn(COMPONENT_STYLE_NAME)}>
         <Form
-            onSubmit={() => {}}
+            onSubmit={authorizeStudent}
             render={({handleSubmit, submitting, pristine, values}) => (
                 <form onSubmit={handleSubmit} noValidate>
                     <div className={cn(`${COMPONENT_STYLE_NAME}__form-container`)}>
@@ -34,10 +36,11 @@ export const StudentLoginFormView = ({setStudentIsAuth}: PropsType) => {
                                     <AccountCircle />
                                 </Grid>
                                 <Grid item>
-                                    <TextField id="input-with-icon-grid"
-                                               label="Логин"
-                                               input={Field} meta=""
-                                               name="studentLogin"
+                                    <Field
+                                        name="login"
+                                        component={TextField}
+                                        type="text"
+                                        label="Логин"
                                     />
                                 </Grid>
                             </Grid>
@@ -49,18 +52,16 @@ export const StudentLoginFormView = ({setStudentIsAuth}: PropsType) => {
                                     <LockOpenIcon />
                                 </Grid>
                                 <Grid item>
-                                    <TextField id="input-with-icon-grid"
-                                               label="Пароль"
-                                               type="password"
-                                               input={Field} meta=""
-                                               name="studentPassword"
+                                    <Field
+                                        name="password"
+                                        component={TextField}
+                                        type="password"
+                                        label="Пароль"
                                     />
                                 </Grid>
                             </Grid>
                         </div>
-                        <div className={cn(`${COMPONENT_STYLE_NAME}__submit-button`)}
-                        onClick={authorizeStudent}
-                        >
+                        <div className={cn(`${COMPONENT_STYLE_NAME}__submit-button`)}>
                             <Button
                                 variant="contained"
                                 color="secondary"
@@ -83,4 +84,4 @@ export const StudentLoginFormView = ({setStudentIsAuth}: PropsType) => {
     );
 };
 
-export const StudentLoginForm = connect(null, {setStudentIsAuth})(StudentLoginFormView);
+export const StudentLoginForm = connect(null, {loginStudent: loginThunk})(StudentLoginFormView);

@@ -1,0 +1,20 @@
+.Admin {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+  &__form-container {
+    padding-top: 290px;
+    position: fixed;
+  }
+  &__label {
+    font-size: 28px;
+  }
+  &__form-item {
+    margin-top: 20px;
+  }
+  &__form-button {
+    margin-top: 20px;
+  }
+}

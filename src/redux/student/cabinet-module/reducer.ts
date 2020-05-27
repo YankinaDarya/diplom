@@ -1,30 +1,16 @@
-import {SET_NEW_STUDENT_DATA, SET_STUDENT_DATA, SET_STUDENT_IS_AUTH} from "./actions";
-
-type StateType = {
-    id: number | null;
-    fullName: number | null;
-    birthDate: string | null;
-    passport: any;
-    snils: any;
-    department: string | null;
-    address: any;
-    email: string;
-    courses: Array<string> | null;
-    course: string | null;
-    studentIsAuth: boolean;
-};
+import {SET_NEW_STUDENT_DATA, SET_STUDENT_DATA, SET_STUDENT_IS_AUTH, SET_STUDENT_ID_ACTION} from "./actions";
 
 const initialState = {
-    id: 1235,
-    fullName: 'Иван Сергеевич Сергеев',
-    birthDate: '24.06.1975',
-    passport: '4521 203698',
-    snils: '123-546-789 32',
-    department: 'Корпоративных информационных систем',
-    address: '141707, Московская обл, г.Балашиха, ул.Ленина, дом № 34А, квартира 16',
-    email: 'sergeev@mail.ru',
-    courses: ['ВЭБ-разработка', 'ReactJS', 'Базы данных', 'Сети'],
-    coure: '4 курс',
+    studentId: 0,
+    fullName: '',
+    birthDate: '',
+    passport: '',
+    snils: '',
+    department: '',
+    address: '',
+    email: '',
+    courses: [],
+    coure: '',
     studentIsAuth: false,
 };
 
@@ -57,10 +43,11 @@ export const studentReducer = (state = initialState, {type, payload}: ActionsTyp
             return {
                 ...state, studentIsAuth: payload,
             };
+        case SET_STUDENT_ID_ACTION:
+            return {
+                ...state, studentId: payload,
+            };
         default:
             return state;
     }
 };
-
-
-export const setStudentIsAuth = (payload: boolean) => ({type: SET_STUDENT_IS_AUTH, payload});

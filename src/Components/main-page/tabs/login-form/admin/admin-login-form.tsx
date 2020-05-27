@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, memo } from 'react';
 import {Field, Form} from "react-final-form";
 import {TextField} from "final-form-material-ui";
 import {Button, Grid} from "@material-ui/core";
@@ -6,15 +6,23 @@ import classNames from "classnames/bind";
 import styles from "./admin-login-form.module.scss";
 import {AccountCircle} from "@material-ui/icons";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
+import {connect} from "react-redux";
+import {adminLoginType} from "../../../../../redux/admin/types";
+import {loginThunk} from "../../../../../redux/auth/thunks";
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Student-login';
 
-export const AdminLoginForm = () => {
+type PropsType = {
+    loginAdmin: ({login, password}: adminLoginType) => void;
+};
+
+export const AdminLoginFormView = memo(({loginAdmin}: PropsType) => {
+    const login = useCallback((values) => {loginAdmin(values)}, [loginAdmin]);
     return(
         <div className={cn(COMPONENT_STYLE_NAME)}>
         <Form
-            onSubmit={() => {}}
+            onSubmit={login}
             render={({handleSubmit, submitting, pristine, values}) => (
                 <form onSubmit={handleSubmit} noValidate>
                     <div className={cn(`${COMPONENT_STYLE_NAME}__form-container`)}>
@@ -25,10 +33,11 @@ export const AdminLoginForm = () => {
                                     <AccountCircle />
                                 </Grid>
                                 <Grid item>
-                                    <TextField id="input-with-icon-grid"
-                                               label="Логин"
-                                               input={Field} meta=""
-                                               name="adminLogin"
+                                    <Field
+                                        name="login"
+                                        component={TextField}
+                                        type="text"
+                                        label="Логин"
                                     />
                                 </Grid>
                             </Grid>
@@ -40,11 +49,11 @@ export const AdminLoginForm = () => {
                                     <LockOpenIcon />
                                 </Grid>
                                 <Grid item>
-                                    <TextField id="input-with-icon-grid"
-                                               label="Пароль"
-                                               type="password"
-                                               input={Field} meta=""
-                                               name="adminPassword"
+                                    <Field
+                                        name="password"
+                                        component={TextField}
+                                        type="password"
+                                        label="Пароль"
                                     />
                                 </Grid>
                             </Grid>
@@ -68,4 +77,7 @@ export const AdminLoginForm = () => {
         </div>
         </div>
     );
-};
+});
+
+export const AdminLoginForm = connect(null,
+    {loginAdmin: loginThunk })(AdminLoginFormView);

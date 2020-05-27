@@ -7,23 +7,24 @@ import styles from "./teacher-login-form.module.scss";
 import {AccountCircle} from "@material-ui/icons";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import {connect} from "react-redux";
-import {setTeacherIsAuth} from "../../../../../redux/Teacher/TeacherCabinetReducer";
+import {loginThunk} from "../../../../../redux/auth/thunks";
+import { loginType } from '../../../../../redux/auth/types';
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Student-login';
 
 type PropsType = {
-    setTeacherIsAuth: any;
+    loginTeacher: ({login, password}: loginType) => void;
 };
 
-export const TeacherLoginFormView = ({setTeacherIsAuth}: PropsType) => {
-    const authorizeTeacher = () => {
-        setTeacherIsAuth(true);
+export const TeacherLoginFormView = ({loginTeacher}: PropsType) => {
+    const authorizeTeacher = (values) => {
+        loginTeacher(values);
     };
     return(
         <div className={cn(COMPONENT_STYLE_NAME)}>
         <Form
-            onSubmit={() => {}}
+            onSubmit={authorizeTeacher}
             render={({handleSubmit, submitting, pristine, values}) => (
                 <form onSubmit={handleSubmit} noValidate>
                     <div className={cn(`${COMPONENT_STYLE_NAME}__form-container`)}>
@@ -34,10 +35,11 @@ export const TeacherLoginFormView = ({setTeacherIsAuth}: PropsType) => {
                                     <AccountCircle />
                                 </Grid>
                                 <Grid item>
-                                    <TextField id="input-with-icon-grid"
-                                               label="Логин"
-                                               input={Field} meta=""
-                                               name="teacherLogin"
+                                    <Field
+                                        name="login"
+                                        component={TextField}
+                                        type="text"
+                                        label="Логин"
                                     />
                                 </Grid>
                             </Grid>
@@ -49,17 +51,16 @@ export const TeacherLoginFormView = ({setTeacherIsAuth}: PropsType) => {
                                     <LockOpenIcon />
                                 </Grid>
                                 <Grid item>
-                                    <TextField id="input-with-icon-grid"
-                                               label="Пароль"
-                                               type="password"
-                                               input={Field} meta=""
-                                               name="teacherPassword"
+                                    <Field
+                                        name="password"
+                                        component={TextField}
+                                        type="password"
+                                        label="Пароль"
                                     />
                                 </Grid>
                             </Grid>
                         </div>
                         <div className={cn(`${COMPONENT_STYLE_NAME}__submit-button`)}
-                        onClick={authorizeTeacher}
                         >
                             <Button
                                 variant="contained"
@@ -83,4 +84,4 @@ export const TeacherLoginFormView = ({setTeacherIsAuth}: PropsType) => {
     );
 };
 
-export const TeacherLoginForm = connect(null, {setTeacherIsAuth})(TeacherLoginFormView);
+export const TeacherLoginForm = connect(null, {loginTeacher: loginThunk})(TeacherLoginFormView);
