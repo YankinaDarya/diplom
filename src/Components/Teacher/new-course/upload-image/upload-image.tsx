@@ -3,28 +3,13 @@ import style from './upload-image.module.scss';
 import upload from '../../../../images/upload2.png'
 import CloseIcon from '@material-ui/icons/Close';
 
-export const UploadImage = () => {
-    let mainFile = null;
-    let [url, setUrl] = useState('');
-    let [file, setFile] = useState(null);
-    const [fileName, setFileName] = useState('');
-    let uploadImage = (e) => {
-        let reader = new FileReader();
-        let photo_file = e.target.files[0];
-        setFileName(e.target.files[0].name);
-        reader.onloadend = () => {
-            setUrl(`${reader.result}`);
-            setFile(photo_file);
-            mainFile = photo_file;
-        };
-        reader.readAsDataURL(photo_file)
-    };
-    const deleteUrl = () => {
-        setUrl('');
-        setFileName('');
-        setFile(null);
-        mainFile = null;
-    };
+type PropsType = {
+    uploadImage: (e: any) => void;
+    deleteUrl: () => void;
+    url: string;
+};
+
+export const UploadImage = ({uploadImage, deleteUrl, url}: PropsType) => {
     return (
         <div className={style.uploadBlock}>
             <div>

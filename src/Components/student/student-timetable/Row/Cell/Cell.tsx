@@ -32,6 +32,8 @@ type PropsType = {
     isLecture: boolean;
     isSeminar: boolean;
     lessonName: string;
+    place: string;
+    courseId: number;
     updateTimeTableAction: (payload: any) => void;
 };
 
@@ -67,7 +69,8 @@ const numberofLesson = {
 
 const Cell = ({
                   dayNumber, lessonNumber, lessonName,
-                  isLecture, isSeminar, updateTimeTableAction
+                  isLecture, isSeminar, updateTimeTableAction,
+                    place, courseId
               }: PropsType): JSX.Element => {
     const classes = useStyles();
     const [isModalOpen, setOpen] = React.useState(false);
@@ -83,6 +86,8 @@ const Cell = ({
             isLecture: values.lessonType === 'lecture',
             isSeminar: values.lessonType === 'seminar',
             day: dayOfWeekEnglish[dayNumber],
+            place: values.place,
+            courseId: courseId,
             lessonNumber: lessonNumber
         };
         updateTimeTableAction(newLesson);
@@ -94,7 +99,12 @@ const Cell = ({
                 {[`${COMPONENT_STYLE_NAME}--lecture`]: isLecture,},
                 {[`${COMPONENT_STYLE_NAME}--seminar`]: isSeminar,},
             )} onClick={handleOpen}>
-                {lessonName}
+                <div>
+                    {lessonName}
+                </div>
+                <div>
+                    {place}
+                </div>
             </td>
             {isModalOpen && (<Modal
                 aria-labelledby="transition-modal-title"
@@ -116,6 +126,7 @@ const Cell = ({
                                     isSeminar={isSeminar}
                                     lessonName={lessonName}
                                     onSubmit={onSubmit}
+                                    place={place}
                         />
                     </div>
                 </Fade>

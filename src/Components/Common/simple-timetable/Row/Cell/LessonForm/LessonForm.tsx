@@ -23,17 +23,6 @@ const formFields = [
         ),
     },
     {
-        size: 6,
-        field: (
-            <TextField
-                label="Место проведения"
-                name="place"
-                margin="none"
-                required={true}
-            />
-        ),
-    },
-    {
         size: 12,
         field: (
             <Radios
@@ -54,12 +43,11 @@ type PropsType = {
     isLecture: boolean;
     isSeminar: boolean;
     lessonName: string;
-    place: string;
-    onSubmit: (values: {lessonName: string, lessonType: string, place: string}) => void
+    onSubmit: (values: {lessonName: string, lessonType: string}) => void
 };
 
 export const LessonForm = ({lessonName,
-                               isLecture, isSeminar, onSubmit, place}: PropsType): JSX.Element => {
+                               isLecture, isSeminar, onSubmit}: PropsType): JSX.Element => {
     const onMySubmit = (values) => {
         onSubmit(values);
     };
@@ -67,7 +55,7 @@ export const LessonForm = ({lessonName,
             <Form
                 onSubmit={onMySubmit}
                 initialValues={{ lessonName: `${lessonName}`, lessonType: isLecture ?
-                        'lecture' : isSeminar ? 'seminar' : '', place: place }}
+                        'lecture' : isSeminar ? 'seminar' : '' }}
                 render={({ handleSubmit, submitting, pristine, values }) => (
                     <form onSubmit={handleSubmit} noValidate>
                         <Paper style={{ padding: 16 }}>

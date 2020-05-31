@@ -23,6 +23,17 @@ const formFields = [
         ),
     },
     {
+        size: 6,
+        field: (
+            <TextField
+                label="Место проведения"
+                name="place"
+                margin="none"
+                required={false}
+            />
+        ),
+    },
+    {
         size: 12,
         field: (
             <Radios
@@ -43,11 +54,13 @@ type PropsType = {
     isLecture: boolean;
     isSeminar: boolean;
     lessonName: string;
+    place: string;
     onSubmit: (values: {lessonName: string, lessonType: string}) => void
+    deleteLesson: () => void
 };
 
 export const LessonForm = ({lessonName,
-                               isLecture, isSeminar, onSubmit}: PropsType): JSX.Element => {
+                               isLecture, isSeminar, onSubmit, place, deleteLesson}: PropsType) => {
     const onMySubmit = (values) => {
         onSubmit(values);
     };
@@ -55,7 +68,7 @@ export const LessonForm = ({lessonName,
             <Form
                 onSubmit={onMySubmit}
                 initialValues={{ lessonName: `${lessonName}`, lessonType: isLecture ?
-                        'lecture' : isSeminar ? 'seminar' : '' }}
+                        'lecture' : isSeminar ? 'seminar' : '', place: place }}
                 render={({ handleSubmit, submitting, pristine, values }) => (
                     <form onSubmit={handleSubmit} noValidate>
                         <Paper style={{ padding: 16 }}>
@@ -68,11 +81,19 @@ export const LessonForm = ({lessonName,
                                 <Grid item style={{ marginTop: 16 }}>
                                     <Button
                                         variant="contained"
-                                        color="primary"
+                                        color="secondary"
                                         type="submit"
                                         disabled={submitting}
                                     >
                                         Добавить
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        type="button"
+                                        onClick={deleteLesson}
+                                    >
+                                        Удалить
                                     </Button>
                                 </Grid>
                             </Grid>

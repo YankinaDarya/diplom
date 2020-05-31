@@ -1,21 +1,21 @@
 import React from 'react';
 import style from './StudentsTable.module.scss';
-import { StudentsHomework } from '../../../../../redux/Teacher/TeacherCoursesReducer';
+import {HomeworkType} from '../../../../../redux/Teacher/TeacherCoursesReducer';
 import { HomeWorkEditField } from './HomeworkEditField/HomeworkEditField';
 
 type PropsType = {
     id: number;
-    firstName: string;
-    secondName: string;
-    group: number;
-    homeworks: Array<StudentsHomework>;
+    firstName: string | null;
+    secondName: string | null;
+    group: string | null;
+    homeworks: Array<HomeworkType>;
     index: number;
 };
 
-const StudentsRow = ({id, firstName, secondName, group,
-                         homeworks, index}: PropsType): JSX.Element => {
+const StudentsRow = ({firstName, secondName, group,
+                         homeworks, index}: PropsType) => {
     const homeworksData = homeworks.map((work) => <div>
-        <a href="https://github.com/">{work.file}</a>
+        <a href={`${work.hw_url}`}>{work.week_num}</a>
     </div>);
     const homeworksMark = homeworks.map((work) =>
         <HomeWorkEditField onClickSave={() => {}}

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {RouteComponentProps} from 'react-router-dom';
 import styles from './student-course-page.module.scss';
-import {CourseType, sendNotificationAction} from "../../../redux/Teacher/TeacherCoursesReducer";
+import {CourseType} from "../../../redux/Teacher/TeacherCoursesReducer";
 import classNames from "classnames/bind";
 import { StudentsAccordion } from './students-accordion/students-accordion';
 import {Button} from "@material-ui/core";
@@ -16,22 +16,19 @@ type ReduxType = {
     courses?: Array<CourseType>;
 };
 
-type MapDispatchToPropsType = {
-    sendNotificationAction?: (values: string, courseId: number) => void;
-};
-
 type RouterProps = {
     id?: string;
 };
-type PropsType = ReduxType & RouterProps & MapDispatchToPropsType;
+type PropsType = ReduxType & RouterProps;
 
 class CoursePageView extends React.PureComponent<PropsType, {}> {
     render() {
-        const courseId = Number(this.props.id);
+        return <div>kek</div>
+        /*const courseId = Number(this.props.id);
         if(this.props.courses !== undefined) {
             const courseInfo = this.props.courses.find(course => course.id === courseId);
             if (courseInfo !== undefined) {
-                const {name, imgUrl, info, time, place, teacher, plan, students, notifications} = courseInfo;
+                const {name, imgurl, info, time, place, teacher, plan, students, notifications} = courseInfo;
                 return (
                     <div className={cn(COMPONENT_STYLE_NAME)}>
                         <div className={cn(`${COMPONENT_STYLE_NAME}__header-container`)}>
@@ -39,7 +36,7 @@ class CoursePageView extends React.PureComponent<PropsType, {}> {
                             <div className={cn(`${COMPONENT_STYLE_NAME}__mark`)}>Текущая оценка за курс: 4,76</div>
                         </div>
                         <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
-                            <img src={imgUrl} alt="web" className={cn(`${COMPONENT_STYLE_NAME}__img`)}/>
+                            <img src={imgurl} alt="web" className={cn(`${COMPONENT_STYLE_NAME}__img`)}/>
                             <div className={cn(`${COMPONENT_STYLE_NAME}__info`)}>
                                 <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}><h4>Информация о курсе:</h4>
                                     {info}
@@ -88,22 +85,16 @@ class CoursePageView extends React.PureComponent<PropsType, {}> {
                             </div>
                         </div>
                         <h2>Объявления:</h2>
-                        {notifications.map(item => <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
+                        {/!*{notifications.map(item => <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
                             <div className={cn(`${COMPONENT_STYLE_NAME}__info`)}>
                                 <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>{item}</div>
                             </div>
-                        </div>)}
+                        </div>)}*!/}
                     </div>
                 );
             }
-        }
+        }*/
     }
 }
 
-
-const mapStateToProps = (state: any, ownProps: RouteComponentProps<RouterProps>): PropsType => ({
-    courses: state.teacherCoursesReducer.courses,
-    id: ownProps.match.params.id,
-});
-
-export const StudentCoursePage =  connect(mapStateToProps, {sendNotificationAction})(CoursePageView);
+export const StudentCoursePage =  connect(null, {})(CoursePageView);

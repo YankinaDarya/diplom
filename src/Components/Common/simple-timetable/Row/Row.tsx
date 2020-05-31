@@ -10,16 +10,13 @@ const COMPONENT_STYLE_NAME = 'Table-lesson-cell';
 type PropsType = {
     rowData: TimetableWeek
     rowNumber: number;
-    updateTimeTableAction: (payload: any) => void;
 };
 
-const Row = ({rowData, rowNumber, updateTimeTableAction}: PropsType): JSX.Element => {
+const Row = ({rowData, rowNumber}: PropsType): JSX.Element => {
     const values: Array<{
         name: string,
         isLecture: boolean,
         isSeminar: boolean,
-        place: string,
-        courseId: number,
     }> = Object.keys(rowData).map(
         key => rowData[key]
     );
@@ -28,9 +25,6 @@ const Row = ({rowData, rowNumber, updateTimeTableAction}: PropsType): JSX.Elemen
                                lessonNumber={rowNumber} isLecture={cell.isLecture}
                                isSeminar={cell.isSeminar}
                                lessonName={cell.name}
-                               place={cell.name}
-                               courseId={cell.courseId}
-                               updateTimeTableAction={updateTimeTableAction}
                                key={index}/>);
     return (<tbody>
     <tr>

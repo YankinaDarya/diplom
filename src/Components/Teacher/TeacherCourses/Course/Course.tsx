@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import styles from './Course.module.scss';
 import { CourseType } from '../../../../redux/Teacher/TeacherCoursesReducer';
 import classNames from "classnames/bind";
+import {Schedule} from "./_components/schedule";
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Course-block';
@@ -12,12 +13,12 @@ type PropsType = {
 };
 
 const Course = ({course}: PropsType): JSX.Element => {
-    const {id, name, imgUrl, info, time, place, teacher} = course;
+    const {id, name, imgurl, info, teacher, schedule} = course;
     return (
         <div className={cn(COMPONENT_STYLE_NAME)}>
             <h2 className={cn(`${COMPONENT_STYLE_NAME}__title`)}>{name}</h2>
             <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
-                <img src={imgUrl} alt="web"
+                <img src={imgurl} alt="web"
                      className={cn(`${COMPONENT_STYLE_NAME}__image`)} />
                 <div className={cn(`${COMPONENT_STYLE_NAME}__info`)}>
                     <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>
@@ -26,12 +27,14 @@ const Course = ({course}: PropsType): JSX.Element => {
                             {info}
                         </span>
                     </div>
-                    <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>
-                        <i>Время и место проведения:</i>
-                        <span className={cn(`${COMPONENT_STYLE_NAME}__text`)}>
-                            {place}, {time}
+                    {Boolean(schedule.length) && (
+                        <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>
+                            <i>Время и место проведения:</i>
+                            <span className={cn(`${COMPONENT_STYLE_NAME}__text`)}>
+                            {schedule.map((item) => <Schedule {...item}/>)}
                         </span>
-                    </div>
+                        </div>
+                    )}
                     <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>
                         <i>Лектор:</i>
                         <span className={cn(`${COMPONENT_STYLE_NAME}__text`)}> {teacher} </span>

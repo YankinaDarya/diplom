@@ -9,13 +9,13 @@ type PropsType = {
 
 const StudentsTable = ({students}: PropsType): JSX.Element => {
     const studentRow = students.map(({
-                                         id, firstName, secondName,
-                                         homeworks,
+                                         student_id, firstname, lastname,
+                                         hw,
                                          group
-                                     }, index) => <StudentsRow id={id}
-                                                               firstName={firstName}
-                                                               secondName={secondName}
-                                                               homeworks={homeworks}
+                                     }, index) => <StudentsRow id={student_id}
+                                                               firstName={firstname}
+                                                               secondName={lastname}
+                                                               homeworks={hw}
                                                                group={group}
                                                                index={index + 1}
     />);

@@ -43,8 +43,8 @@ const AppView = ({teacherIsAuth, studentIsAuth, adminIsAuth, initializeApp}: Pro
                 <div className={style.appWrapperContent}>
                     <Route exact path="/" render={() => <TeacherCabinet/>}/>
                     <Route exact path="/courses" render={() => <TeacherCourses/>}/>
-                    <Route exact path="/course/:id?"
-                           render={(props) => <CoursePage {...props} />}/>
+                    <Route exact path="/course/:id"
+                           render={() => <CoursePage />}/>
                     <Route exact path="/timetable" render={() => <TeacherTimetable/>}/>
                     <Route exact path="/messages" render={() => <Messages />}/>
                     <Route exact path="/notifications" render={() => <NotificationPage />}/>
@@ -59,7 +59,7 @@ const AppView = ({teacherIsAuth, studentIsAuth, adminIsAuth, initializeApp}: Pro
                     <Route exact path="/" render={() => <StudentCabinet/>}/>
                     <Route exact path="/student/courses" render={() => <StudentCourses/>}/>
                     <Route exact path="/student/course/:id?"
-                           render={(props) => <StudentCoursePage {...props} />}/>
+                           render={() => <StudentCoursePage />}/>
                     <Route exact path="/student/timetable" render={() => <StudentTimetable/>}/>
                     <Route exact path="/student/notifications" render={() => <StudentNotifications/>}/>
                 </div>

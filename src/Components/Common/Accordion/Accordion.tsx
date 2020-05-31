@@ -7,22 +7,20 @@ type PropsType = {
 };
 
 const Accordion = ({plan}: PropsType): JSX.Element => {
-    /*const {weekNumber, abstract, content, homework} = plan;*/
-    const accordeonItems = plan.map(({weekNumber, abstract, content, homework}) =>
-        <div><input id={`ac-${weekNumber}`} name={`accordion-${weekNumber}`} type="checkbox"/>
-            <label htmlFor={`ac-${weekNumber}`}>Неделя {weekNumber}</label>
+    const accordeonItems = plan.map(({week_num, abstract, content_link, homework, is_hw}) =>
+        <div><input id={`ac-${week_num}`} name={`accordion-${week_num}`} type="checkbox"/>
+            <label htmlFor={`ac-${week_num}`}>Неделя {week_num}</label>
             <article>
-                <div>Содержание: {content}</div>
+                <div>Содержание: {content_link}</div>
                 <div>Конспект:
                     {abstract}
                 </div>
                 <div>Домашнее задание:
-                    {homework}
+                    {is_hw? homework: 'Нет задания'}
                 </div>
             </article>
         </div>
     );
-    debugger;
     return (
         <section className={style.acContainer}>
             {accordeonItems}

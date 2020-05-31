@@ -11,5 +11,11 @@ export const teacherAPI = {
     },
     getTeacherCourses(id: number) {
         return instance.get(`lecturer/course/${id}`).then(res => res.data);
+    },
+    getTeacherTimetable(id: number) {
+        return instance.get(`schedule/lecturer/${id}`).then(res => res.data);
+    },
+    getTeacherUnapprovedTimetable(id: number) {
+        return instance.get(`schedule/lecturer/unapp/${id}`).then(res => res.data);
     }
 };

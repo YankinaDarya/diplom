@@ -5,7 +5,7 @@ import Row from './Row/Row';
 import styles from './student-timetable.module.scss';
 import { connect } from 'react-redux';
 import { TimetableWeek } from '../../../types/types';
-import {updateTimeTableAction} from "../../../redux/Teacher/TeacherTimeTable";
+import {updateTimeTableAction} from "../../../redux/Teacher/actions";
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Table-block';

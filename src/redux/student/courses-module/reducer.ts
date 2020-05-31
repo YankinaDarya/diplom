@@ -1,4 +1,4 @@
-import {SEND_QUESTION} from "./actions";
+import {SEND_QUESTION, START_CREATING_NEW_COURSE_ACTION, STOP_CREATING_NEW_COURSE_ACTION, SET_SUCCESS_CREAT_COURSE_ACTION, SET_ERROR_CREAT_COURSE_ACTION} from "./actions";
 
 export type Plan = {
     weekNumber: number;
@@ -21,6 +21,9 @@ export type StudentCourseType = {
 
 type StateType = {
     studentCourses: Array<StudentCourseType>
+    errorAddMessage: '',
+    isSuccessAdd: false,
+    isAdding: false,
 };
 
 const initialState = {
@@ -65,7 +68,10 @@ const initialState = {
                 }
             ],
             notifications: ['В эту пятницу занятия не будет по причине болезни преподавателя'],
-        */},]
+        */},],
+    errorCreateCourseMessage: '',
+    isSuccessCreateNewCourse: false,
+    isCreating: false,
 };
 
 type InitialState = typeof initialState;
@@ -75,12 +81,28 @@ type ActionsType = {
     payload?: any;
 };
 
-export const studentCoursesReducer = (state = initialState,
+export const coursesReducer = (state = initialState,
                                       {type, payload}: ActionsType,) => {
     switch (type) {
         case SEND_QUESTION:
             return {
                 ...state
+            };
+        case START_CREATING_NEW_COURSE_ACTION:
+            return {
+                ...state, isCreating: true,
+            };
+        case STOP_CREATING_NEW_COURSE_ACTION:
+            return {
+                ...state, isCreating: false,
+            };
+        case SET_SUCCESS_CREAT_COURSE_ACTION:
+            return {
+            ...state, isSuccessCreateNewCourse: payload,
+        };
+        case SET_ERROR_CREAT_COURSE_ACTION:
+            return {
+                ...state, errorCreateCourseMessage: payload,
             };
         default:
             return state;

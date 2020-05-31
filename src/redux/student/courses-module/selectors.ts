@@ -1,11 +1,21 @@
 import {createSelector} from "reselect";
 import {AppStateType} from "../../store";
 
-const getStudentInfo = (state: AppStateType) => {
-    return state.studentCoursesReducer;
+const getCoursesInfo = (state: AppStateType) => {
+    return state.coursesReducer;
 };
 
-export const getStudentAllCourses = createSelector(getStudentInfo,
-    (studentCourses) => {
-        return studentCourses.studentCourses;
+export const isCourseCreating = createSelector(getCoursesInfo,
+    (courses) => {
+        return courses.isCreating;
+    });
+
+export const isSuccessCreating = createSelector(getCoursesInfo,
+    (courses) => {
+        return courses.isSuccessCreateNewCourse;
+    });
+
+export const getErrorCourseCreatingMessage = createSelector(getCoursesInfo,
+    (courses) => {
+        return courses.errorCreateCourseMessage;
     });

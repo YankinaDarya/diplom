@@ -3,7 +3,7 @@ import { teacherReducer } from "./Teacher/TeacherCabinetReducer";
 import {teacherTimetableReducer} from "./Teacher/TeacherTimeTable";
 import { teacherCoursesReducer } from "./Teacher/TeacherCoursesReducer";
 import {studentReducer} from "./student/cabinet-module/reducer";
-import {studentCoursesReducer} from "./student/courses-module/reducer";
+import { coursesReducer } from "./student/courses-module/reducer";
 import thunkMiddleware from "redux-thunk";
 import { adminAuthReducer } from "./admin/reducer";
 import {appReducer} from "./app/reducer";
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     teacherCoursesReducer: teacherCoursesReducer,
 
     studentReducer: studentReducer,
-    studentCoursesReducer: studentCoursesReducer,
+    coursesReducer: coursesReducer,
     adminReducer: adminAuthReducer,
     appReducer: appReducer,
 });

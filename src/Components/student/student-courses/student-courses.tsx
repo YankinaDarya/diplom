@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styles from './student-courses.module.scss';
 import StudentCourse from './сourse/student-сourse';
-import {getStudentAllCourses} from "../../../redux/student/courses-module/selectors";
+/*import {getStudentAllCourses} from "../../../redux/student/courses-module/selectors";*/
 import {AppStateType} from "../../../redux/store";
 import { StudentCourseType } from '../../../redux/student/courses-module/reducer';
 import classNames from "classnames/bind";
@@ -14,7 +14,7 @@ type PropsType = {
     studentCourses: Array<StudentCourseType>;
 };
 
-const StudentCoursesView = ({studentCourses}: PropsType): JSX.Element => {
+const StudentCoursesView = ({studentCourses}: PropsType) => {
     const renderCourses = studentCourses.map(
         (course, index) => <StudentCourse course={course}/>);
     return (
@@ -30,7 +30,7 @@ const StudentCoursesView = ({studentCourses}: PropsType): JSX.Element => {
 
 const mapStateToProps = (state: AppStateType) => {
     return {
-        studentCourses: getStudentAllCourses(state),
+        studentCourses: [],/*getStudentAllCourses(state),*/
     }
 };
 
