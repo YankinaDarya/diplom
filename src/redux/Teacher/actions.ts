@@ -52,6 +52,17 @@ export const setTeacherTimetableAction:  Action<any> = (payload) => ({
     payload,
 });
 
+export const SET_COPIED_APPROVED_TEACHER_TIMETABLE = 'SET_COPIED_APPROVED_TEACHER_TIMETABLE';
+export const setCopiedApprovedTeacherTimetableAction:  Action<any> = (payload) => ({
+    type: SET_COPIED_APPROVED_TEACHER_TIMETABLE,
+    payload,
+});
+
+export const SET_TEACHER_HAS_UNAPPROVED_TIMETABLE = 'SET_TEACHER_HAS_UNAPPROVED_TIMETABLE';
+export const setTeacherHasUnapprovedTimetableAction:  Action<boolean> = (payload) => ({
+    type: SET_TEACHER_HAS_UNAPPROVED_TIMETABLE,
+    payload,
+});
 
 export const TMP = 'TMP';
 export const sendNotificationAction = (payload: any) => ({type: TMP, payload});

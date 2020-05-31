@@ -35,6 +35,7 @@ type PropsType = {
     place: string;
     courseId: number;
     updateTimeTableAction: (payload: any) => void;
+    teacherCourses: Array<any>;
 };
 
 const dayOfWeek = {
@@ -70,8 +71,8 @@ const numberofLesson = {
 const Cell = ({
                   dayNumber, lessonNumber, lessonName,
                   isLecture, isSeminar, updateTimeTableAction,
-                  place, courseId
-              }: PropsType): JSX.Element => {
+                  place, courseId, teacherCourses
+              }: PropsType) => {
     const classes = useStyles();
     const [isModalOpen, setOpen] = React.useState(false);
     const handleOpen = () => {
@@ -82,12 +83,12 @@ const Cell = ({
     };
     const onSubmit = values => {
         const newLesson = {
-            lessonName: values.lessonName,
+            lessonName: teacherCourses.find(item => item.id === values.courseId).name,
             isLecture: values.lessonType === 'lecture',
             isSeminar: values.lessonType === 'seminar',
             day: dayOfWeekEnglish[dayNumber],
             place: values.place,
-            courseId: courseId,
+            courseId: values.courseId,
             lessonNumber: lessonNumber
         };
         updateTimeTableAction(newLesson);
@@ -141,6 +142,7 @@ const Cell = ({
                                     onSubmit={onSubmit}
                                     place={place}
                                     deleteLesson={deleteLesson}
+                                    teacherCourses={teacherCourses}
                         />
                     </div>
                 </Fade>

@@ -1,10 +1,10 @@
 import {teacherAPI} from "../../api/teacher";
 import {
-    setAllTeacherCoursesAction,
+    setAllTeacherCoursesAction, setCopiedApprovedTeacherTimetableAction,
     setNewTeacherDataAction,
     setStartLoadingTeacherTimetablePageAction,
     setStopLoadingTeacherTimetablePageAction,
-    setTeacherDataAction, setTeacherTimetableAction, updateTimeTableAction
+    setTeacherDataAction, setTeacherHasUnapprovedTimetableAction, setTeacherTimetableAction, updateTimeTableAction
 } from "./actions";
 
 export const updateTeacherInfoThunk = (id: number, payload: any): any =>
@@ -12,6 +12,16 @@ export const updateTeacherInfoThunk = (id: number, payload: any): any =>
         teacherAPI.updateInfo(id, payload).then((response => {
             if (response === "OK") {
                 dispatch(setNewTeacherDataAction(payload));
+            }
+        }))
+    };
+
+export const sentTeacherTimetableThunk = (id: number, data: any): any =>
+    (dispatch) => {
+    const payload = {lec_id: id, schedule: data};
+        teacherAPI.sentTeacherTimetable(payload).then((response => {
+            if (response === "OK") {
+                dispatch(getTeacherUnapprovedTimetableThunk(id));
             }
         }))
     };
@@ -48,7 +58,8 @@ export const getTeacherTimetableThunk = (id: number): any =>
                             place: lesson.place,
                             courseId: lesson.course_id
                         };
-                        dispatch(setTeacherTimetableAction({...lessonData}))
+                        dispatch(setTeacherTimetableAction({...lessonData}));
+                        dispatch(setCopiedApprovedTeacherTimetableAction({...lessonData}));
                     })
                 }
             }
@@ -59,6 +70,9 @@ export const getTeacherUnapprovedTimetableThunk = (id: number): any =>
     (dispatch) => {
         teacherAPI.getTeacherUnapprovedTimetable(id).then((response => {
                 if (response) {
+                    if(response.schedule.length !== 0) {
+                        dispatch(setTeacherHasUnapprovedTimetableAction(true));
+                    }
                     response.schedule.forEach((lesson) => {
                         const lessonData = {
                             lessonNumber: lesson.time,

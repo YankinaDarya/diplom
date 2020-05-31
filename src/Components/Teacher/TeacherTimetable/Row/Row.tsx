@@ -11,9 +11,10 @@ type PropsType = {
     rowData: TimetableWeek
     rowNumber: number;
     updateTimeTableAction: (payload: any) => void;
+    teacherCourses: Array<any>;
 };
 
-const Row = ({rowData, rowNumber, updateTimeTableAction}: PropsType) => {
+const Row = ({rowData, rowNumber, updateTimeTableAction, teacherCourses}: PropsType) => {
     const values: Array<{
         name: string,
         isLecture: boolean,
@@ -31,7 +32,9 @@ const Row = ({rowData, rowNumber, updateTimeTableAction}: PropsType) => {
                                place={cell.place}
                                courseId={cell.courseId}
                                updateTimeTableAction={updateTimeTableAction}
-                               key={index}/>);
+                               key={index}
+                               teacherCourses={teacherCourses}
+        />);
     return (<tbody>
     <tr>
         <td className={cn(COMPONENT_STYLE_NAME)}>{rowNumber} пара</td>

@@ -14,3 +14,13 @@ export const getTeacherApprovedTimetableData = createSelector(getTeacherTimetabl
     (teacherTimetableInfo) => {
         return teacherTimetableInfo.approvedTimetableData;
     });
+
+export const getCopiedTeacherApprovedTimetableData = createSelector(getTeacherTimetableInfo,
+    (teacherTimetableInfo) => {
+        return teacherTimetableInfo.copiedApprovedTimeTableData;
+    });
+
+export const getHasUnapprovedTimetable = createSelector(getTeacherTimetableInfo,
+    (teacherTimetableInfo) => {
+        return teacherTimetableInfo.hasUnapprovedTimetable;
+    });

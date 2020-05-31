@@ -1,16 +1,19 @@
-import React from 'react';
-import { Form } from 'react-final-form';
+import React, {memo, useMemo} from 'react';
+import {Field, Form} from "react-final-form";
+import {TextField} from "final-form-material-ui";
+import MenuItem from '@material-ui/core/MenuItem';
+/*import {Field, Form} from 'react-final-form';*/
 import {
-    TextField,
-    Radios,
+    Select
 } from 'mui-rff';
 import {
     Paper,
     Grid,
     Button,
 } from '@material-ui/core';
+import {Radios} from "mui-rff";
 
-const formFields = [
+/*const formFields = [
     {
         size: 6,
         field: (
@@ -48,22 +51,26 @@ const formFields = [
             />
         ),
     },
-];
+];*/
 
 type PropsType = {
     isLecture: boolean;
     isSeminar: boolean;
     lessonName: string;
     place: string;
-    onSubmit: (values: {lessonName: string, lessonType: string}) => void
-    deleteLesson: () => void
+    onSubmit: (values: {lessonName: string, lessonType: string}) => void;
+    deleteLesson: () => void;
+    teacherCourses: Array<any>;
 };
 
-export const LessonForm = ({lessonName,
-                               isLecture, isSeminar, onSubmit, place, deleteLesson}: PropsType) => {
+export const LessonForm = memo(({lessonName,
+                               isLecture, isSeminar, onSubmit, place, deleteLesson, teacherCourses}: PropsType) => {
     const onMySubmit = (values) => {
         onSubmit(values);
     };
+    const options = teacherCourses.map((course) => {
+        return {id: course.id, name: course.name}
+    });
     return (
             <Form
                 onSubmit={onMySubmit}
@@ -73,11 +80,34 @@ export const LessonForm = ({lessonName,
                     <form onSubmit={handleSubmit} noValidate>
                         <Paper style={{ padding: 16 }}>
                             <Grid container alignItems="flex-start" spacing={2}>
-                                {formFields.map((item, idx) => (
+                                <Select
+                                    name="courseId"
+                                    label="Предмет"
+                                >
+                                    {options.map((course) =>
+                                        <MenuItem value={course.id}>{course.name}</MenuItem>)}
+                                </Select>
+                                <Field
+                                    label="Место проведения"
+                                    name="place"
+                                    component={TextField}
+                                    required={false}
+                                />
+                                <Radios
+                                    label="Тип занятия"
+                                    name="lessonType"
+                                    formControlProps={{ margin: 'none' }}
+                                    radioGroupProps={{ row: true }}
+                                    data={[
+                                        { label: 'Лекция', value: 'lecture' },
+                                        { label: 'Семинар', value: 'seminar' },
+                                    ]}
+                                />
+                                {/*{formFields.map((item, idx) => (
                                     <Grid item key={idx}>
                                         {item.field}
                                     </Grid>
-                                ))}
+                                ))}*/}
                                 <Grid item style={{ marginTop: 16 }}>
                                     <Button
                                         variant="contained"
@@ -102,4 +132,4 @@ export const LessonForm = ({lessonName,
                 )}
             />
     );
-};
+});

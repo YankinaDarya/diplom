@@ -2,56 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb674525-3f5a-436c-9b3e-992040af22b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/Common/simple-timetable/Row/Cell/Cell.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Common/simple-timetable/Row/Cell/Cell.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Common/simple-timetable/Row/Cell/LessonForm/LessonForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Common/simple-timetable/Row/Row.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Common/simple-timetable/Row/Row.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Common/simple-timetable/TableHeader/TableHeader.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Common/simple-timetable/TableHeader/TableHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Common/simple-timetable/index.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Common/simple-timetable/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Teacher/TeacherCourses/Course/_components/schedule/index.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Teacher/TeacherCourses/Course/_components/schedule/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/course/_types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/course/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/Teacher/consts.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/Teacher/selectors/teacher-course-selectors.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/Teacher/selectors/teacher-timetable-selector.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/student/courses-module/thunks.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Common/Accordion/Accordion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Common/Accordion/Accordion.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/CoursePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/CoursePage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/StudentsTable/StudentsTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/StudentsTable/StudentsTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/StudentsTable/StudentsTable/StudentsRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/StudentsTable/StudentsTable/StudentsRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/TeacherCourses/Course/Course.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/TeacherCourses/Course/Course.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/TeacherCourses/TeacherCourses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/TeacherCourses/TeacherCourses.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/TeacherTimetable/Row/Cell/Cell.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/TeacherTimetable/Row/Cell/Cell.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Teacher/TeacherTimetable/Row/Cell/Cell.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/TeacherTimetable/Row/Cell/Cell.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Teacher/TeacherTimetable/Row/Cell/LessonForm/LessonForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/TeacherTimetable/Row/Cell/LessonForm/LessonForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Teacher/TeacherTimetable/Row/Row.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/TeacherTimetable/Row/Row.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Teacher/TeacherTimetable/TeacherTimetable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/TeacherTimetable/TeacherTimetable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/new-course/new-course.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/new-course/new-course.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/new-course/upload-image/upload-image.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/new-course/upload-image/upload-image.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/new-course/upload-image/upload-image.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/new-course/upload-image/upload-image.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/student/student-course-page/student-course-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-course-page/student-course-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/student/student-courses/student-courses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-courses/student-courses.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/student/student-timetable/Row/Cell/Cell.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-timetable/Row/Cell/Cell.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/student/student-timetable/Row/Cell/Cell.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-timetable/Row/Cell/Cell.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/student/student-timetable/Row/Cell/LessonForm/LessonForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-timetable/Row/Cell/LessonForm/LessonForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/student/student-timetable/Row/Row.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-timetable/Row/Row.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/student/student-timetable/student-timetable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-timetable/student-timetable.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/teacher/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/teacher/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/Teacher/TeacherCoursesReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Teacher/TeacherCoursesReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/Teacher/TeacherTimeTable.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Teacher/TeacherTimeTable.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/Teacher/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Teacher/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/Teacher/selectors/teacher-course-selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Teacher/selectors/teacher-course-selectors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/Teacher/selectors/teacher-timetable-selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Teacher/selectors/teacher-timetable-selector.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/Teacher/thunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Teacher/thunks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/student/courses-module/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/student/courses-module/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/student/courses-module/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/student/courses-module/reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/student/courses-module/selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/student/courses-module/selectors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +109,7 @@
       <workItem from="1590496722231" duration="19231000" />
       <workItem from="1590603521638" duration="10771000" />
       <workItem from="1590844054378" duration="28516000" />
-      <workItem from="1590915715963" duration="19215000" />
+      <workItem from="1590915715963" duration="29715000" />
     </task>
     <servers />
   </component>

@@ -5,6 +5,11 @@ const getTeacherCourseInfo = (state: AppStateType) => {
     return state.teacherCoursesReducer;
 };
 
+export const getTeacherCourses = createSelector(getTeacherCourseInfo,
+    (teacherCourseInfo) => {
+        return teacherCourseInfo.courses;
+    });
+
 export const getCourseMainInfo = createSelector(getTeacherCourseInfo,
     (teacherCourseInfo) => {
         return teacherCourseInfo.course;

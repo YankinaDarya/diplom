@@ -17,5 +17,8 @@ export const teacherAPI = {
     },
     getTeacherUnapprovedTimetable(id: number) {
         return instance.get(`schedule/lecturer/unapp/${id}`).then(res => res.data);
-    }
+    },
+    sentTeacherTimetable(payload: any) {
+        return instance.post(`schedule`, {...payload}).then(res => res.data);
+    },
 };
