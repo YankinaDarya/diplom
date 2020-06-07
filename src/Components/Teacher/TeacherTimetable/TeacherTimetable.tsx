@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import {TimetableWeek} from '../../../types/types';
 import {Button} from "@material-ui/core";
 import {getTeacherTimetableInfoThunk, sentTeacherTimetableThunk} from "../../../redux/Teacher/thunks";
-import {getTeacherId} from "../../../redux/Teacher/selectors/teacher-cabinet-selector";
+import {getTeacherId, getTeacherPageLoading, getTeacherIsAuth} from "../../../redux/Teacher/selectors/teacher-cabinet-selector";
 import {
     setCopiedApprovedTeacherTimetableAction,
     setTeacherTimetableAction,
@@ -21,6 +21,8 @@ import {
     getTeacherTimetableData
 } from "../../../redux/Teacher/selectors/teacher-timetable-selector";
 import {getTeacherCourses} from "../../../redux/Teacher/selectors/teacher-course-selectors";
+import {Preloader} from "../../Common/Preloader";
+import { Redirect } from 'react-router-dom';
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Table-block';
@@ -36,11 +38,15 @@ type PropsType = {
     copiedApprovedTimeTableData: any;
     teacherCourses: Array<any>;
     approve: (id: number, payload: any) => void;
+    isTeacherPageLoading: boolean;
+    isAuth: boolean;
 };
 
-const TeacherTimetable = ({id, timeTableData, updateTimeTable, getTeacherTimetableInfo,
+const TeacherTimetable = ({
+                              id, timeTableData, updateTimeTable, getTeacherTimetableInfo,
                               approvedTimeTableData, unapprovedTimetableFlag, copiedApprovedTimeTableData,
-                              setCopiedApprovedTeacherTimetable, teacherCourses, approve}: PropsType) => {
+                              setCopiedApprovedTeacherTimetable, teacherCourses, approve, isTeacherPageLoading, isAuth,
+                          }: PropsType) => {
     useEffect(() => {
         getTeacherTimetableInfo(id)
     }, []);
@@ -53,7 +59,7 @@ const TeacherTimetable = ({id, timeTableData, updateTimeTable, getTeacherTimetab
         const allScheduleData = copiedApprovedTimeTableData.forEach((week, index) => {
             const days = Object.keys(week);
             days.forEach((day) => {
-                if(Boolean(week[day].courseId)) {
+                if (Boolean(week[day].courseId)) {
                     const data = {
                         course_id: week[day].courseId,
                         day_cd: day,
@@ -68,15 +74,28 @@ const TeacherTimetable = ({id, timeTableData, updateTimeTable, getTeacherTimetab
             });
         });
         approve(id, schedule);
+        changeIsUpdateTable();
     };
     const renderRow = copiedApprovedTimeTableData.map(
         (obj, index) => <Row rowData={obj} rowNumber={index + 1}
                              key={index} updateTimeTableAction={setCopiedApprovedTeacherTimetable}
-                             teacherCourses={teacherCourses} />);
+                             teacherCourses={teacherCourses}/>);
+    if(isTeacherPageLoading) {
+        return <Preloader />
+    }
+    if (!isAuth) return <Redirect to={"/"}/>;
     return (
         <div className={cn(COMPONENT_STYLE_NAME)}>
-            <SimpleTimetable timeTableData={approvedTimeTableData}/>
-            {unapprovedTimetableFlag && <SimpleTimetable timeTableData={timeTableData}/>}
+            <div className={cn(`${COMPONENT_STYLE_NAME}__table-container`)}>
+                <h2 className={cn(`${COMPONENT_STYLE_NAME}__label`)}>Мое расписание</h2>
+                <SimpleTimetable timeTableData={approvedTimeTableData}/>
+            </div>
+            {unapprovedTimetableFlag && (
+                <div className={cn(`${COMPONENT_STYLE_NAME}__table-container`)}>
+                    <h2 className={cn(`${COMPONENT_STYLE_NAME}__label`)}>Расписание на рассмотрении</h2>
+                    <SimpleTimetable timeTableData={timeTableData}/>
+                </div>
+            )}
             {isUpdateTable && (
                 <><h2 className={cn(`${COMPONENT_STYLE_NAME}__label`)}>Новое расписание</h2>
                     <div className={cn(`${COMPONENT_STYLE_NAME}__table-container`)}>
@@ -88,26 +107,29 @@ const TeacherTimetable = ({id, timeTableData, updateTimeTable, getTeacherTimetab
                 </>
             )}
             {!unapprovedTimetableFlag && (
-                <div className={cn(`${COMPONENT_STYLE_NAME}__button`)}>
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        type="submit"
-                        onClick={changeIsUpdateTable}
-                    >
-                        {isUpdateTable ? 'Отмена' : 'Изменить'}
-                    </Button>
-                    {isUpdateTable && (
+                <div className={cn(`${COMPONENT_STYLE_NAME}__buttons-container`)}>
+                    <div className={cn(`${COMPONENT_STYLE_NAME}__button`)}>
                         <Button
                             variant="contained"
                             color="secondary"
                             type="submit"
-                            onClick={approveTimetable}
-                            /*disabled={submitting}*/
+                            onClick={changeIsUpdateTable}
                         >
-                            Отправить на согласование
+                            {isUpdateTable ? 'Отмена' : 'Изменить'}
                         </Button>
-                    )}
+                    </div>
+                    <div className={cn(`${COMPONENT_STYLE_NAME}__button`)}>
+                        {isUpdateTable && (
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                type="submit"
+                                onClick={approveTimetable}
+                            >
+                                Отправить на согласование
+                            </Button>
+                        )}
+                    </div>
                 </div>
             )}
         </div>
@@ -121,6 +143,8 @@ const mapStateToProps = (state) => ({
     copiedApprovedTimeTableData: getCopiedTeacherApprovedTimetableData(state),
     unapprovedTimetableFlag: getHasUnapprovedTimetable(state),
     teacherCourses: getTeacherCourses(state),
+    isTeacherPageLoading: getTeacherPageLoading(state),
+    isAuth: state.teacherReducer.teacherIsAuth,
 });
 
 export default connect(mapStateToProps, {

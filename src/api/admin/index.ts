@@ -11,38 +11,13 @@ export const adminAPI = {
     addUser(login: string, password: string, role: string) {
         return instance.post(`user`, {login, password, role}).then(res => res.data);
     },
+    getTimetables() {
+        return instance.get(`/schedule`).then(res => res.data);
+    },
+    approveTimetable(id: number) {
+        return instance.post(`/schedule/app/${id}`, {}).then(res => res.data);
+    },
+    rejectTimetable(id: number, comment: string) {
+        return instance.post(`/schedule/unapp/${id}`, {comment}).then(res => res.data);
+    },
 };
-
-/*export async function addUser(login: string, password: string, role: string) {
-    const data = {login: login, password: password, role: role};
-    const response = await fetch('/user', {
-        method: 'POST',
-        body: JSON.stringify(data)
-    });
-    if (response.status === 200) {
-        return null;
-    }
-    return response.json();
-}*/
-
-/*export async function loginAdmin(login: string, password: string) {
-    const data = {login: login, password: password};
-    const response = await fetch('/user/auth', {
-        method: 'POST',
-        body: JSON.stringify(data)
-    });
-    if (response.status === 200) {
-        getAdminInfo();
-    }
-    return response.json();
-}
-
-export async function getAdminInfo() {
-    const response = await fetch('/user/auth', {
-        method: 'GET',
-    });
-    if (response.status === 200) {
-        return null;
-    }
-    return response.json();
-}*/

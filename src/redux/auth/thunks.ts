@@ -1,8 +1,45 @@
 import { authAPI } from "../../api/auth";
 import { loginType } from "./types";
 import { setAdminIsAuthAction, setAdminIdAction } from "../admin/actions";
-import { setStudentIdAction, setStudentIsAuth } from "../student/cabinet-module/actions";
-import { setTeacherIsAuth, setTeacherIdAction } from "../Teacher/actions";
+import { setStudentIdAction, setStudentIsAuth, setStudentUnreadNotificationsAction, setStudentUnreadMessagesAction } from "../student/cabinet-module/actions";
+import { setTeacherIsAuth, setTeacherIdAction, setTeacherUnreadNotificationsAction, setTeacherUnreadMessagesAction } from "../Teacher/actions";
+
+export const getTeacherNotificationsNumberThunk = (id: number): any => (dispatch) => {
+    authAPI.getUnreadNotificationsNumber(id)
+        .then((response => {
+            if (response) {
+                dispatch(setTeacherUnreadNotificationsAction(response.not_num));
+            }
+        }))
+};
+
+export const getTeacherMessagesNumberThunk = (id: number): any => (dispatch) => {
+    authAPI.getUnreadMessagesNumber(id)
+        .then((response => {
+            if (response) {
+                dispatch(setTeacherUnreadMessagesAction(response.mes_num));
+            }
+        }))
+};
+
+export const getStudentNotificationsNumberThunk = (id: number): any => (dispatch) => {
+    authAPI.getUnreadNotificationsNumber(id)
+        .then((response => {
+            if (response) {
+                dispatch(setStudentUnreadNotificationsAction(response.not_num));
+            }
+        }))
+};
+
+export const getStudentMessagesNumberThunk = (id: number): any => (dispatch) => {
+    authAPI.getUnreadMessagesNumber(id)
+        .then((response => {
+            if (response) {
+                dispatch(setStudentUnreadMessagesAction(response.mes_num));
+            }
+        }))
+};
+
 
 export const getAuthInfoThunk = (): any =>
     (dispatch) => {
@@ -14,10 +51,14 @@ export const getAuthInfoThunk = (): any =>
                     dispatch(setAdminIsAuthAction(true));
                 }
                 else if(role === 'student') {
+                    dispatch(getStudentNotificationsNumberThunk(response.data[0].id));
+                    dispatch(getStudentMessagesNumberThunk(response.data[0].id));
                     dispatch(setStudentIdAction(response.data[0].id));
                     dispatch(setStudentIsAuth(true));
                 }
                 else if(role === 'lecturer') {
+                    dispatch(getTeacherNotificationsNumberThunk(response.data[0].id));
+                    dispatch(getTeacherMessagesNumberThunk(response.data[0].id));
                     dispatch(setTeacherIdAction(response.data[0].id));
                     dispatch(setTeacherIsAuth(true));
                 }

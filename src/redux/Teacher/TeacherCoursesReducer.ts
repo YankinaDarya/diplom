@@ -35,8 +35,8 @@ export type Students = {
 
 export type scheduleType = {
     day_cd: string;
-    isLecture: boolean;
-    isSeminar: boolean;
+    islecture: boolean;
+    isseminar: boolean;
     place: string;
     time: number;
 }

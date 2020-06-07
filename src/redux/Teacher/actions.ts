@@ -64,5 +64,35 @@ export const setTeacherHasUnapprovedTimetableAction:  Action<boolean> = (payload
     payload,
 });
 
+export const SET_TEACHER_UNREAD_NOTIFICATIONS_NUMBER = 'SET_TEACHER_UNREAD_NOTIFICATIONS_NUMBER';
+export const setTeacherUnreadNotificationsAction:  Action<number> = (payload) => ({
+    type: SET_TEACHER_UNREAD_NOTIFICATIONS_NUMBER,
+    payload,
+});
+
+export const SET_TEACHER_UNREAD_MESSAGES_NUMBER = 'SET_TEACHER_UNREAD_MESSAGES_NUMBER';
+export const setTeacherUnreadMessagesAction:  Action<number> = (payload) => ({
+    type: SET_TEACHER_UNREAD_MESSAGES_NUMBER,
+    payload,
+});
+
+export const SET_ALL_TEACHER_NOTIFICATIONS = 'SET_ALL_TEACHER_NOTIFICATIONS';
+export const setAllTeacherNotificationsAction:  Action<any> = (payload) => ({
+    type: SET_ALL_TEACHER_NOTIFICATIONS,
+    payload,
+});
+
+export const SET_ALL_TEACHER_MESSAGES = 'SET_ALL_TEACHER_MESSAGES';
+export const setAllTeacherMessagesAction:  Action<any> = (payload) => ({
+    type: SET_ALL_TEACHER_MESSAGES,
+    payload,
+});
+
+export const SET_START_TEACHER_PAGE_LOADING = 'SET_START_TEACHER_PAGE_LOADING';
+export const setStartTeacherPageLoading: BaseAction = () => ({type: SET_START_TEACHER_PAGE_LOADING});
+
+export const SET_STOP_TEACHER_PAGE_LOADING = 'SET_STOP_TEACHER_PAGE_LOADING';
+export const setStopTeacherPageLoading: BaseAction = () => ({type: SET_STOP_TEACHER_PAGE_LOADING});
+
 export const TMP = 'TMP';
 export const sendNotificationAction = (payload: any) => ({type: TMP, payload});

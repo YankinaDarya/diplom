@@ -11,11 +11,12 @@ type PropsType = {
     isLecture: boolean;
     isSeminar: boolean;
     lessonName: string;
+    place: string;
 };
 
 const Cell = ({
                   lessonName,
-                  isLecture, isSeminar
+                  isLecture, isSeminar, place,
               }: PropsType) => {
     return (
         <>
@@ -23,7 +24,12 @@ const Cell = ({
                 {[`${COMPONENT_STYLE_NAME}--lecture`]: isLecture,},
                 {[`${COMPONENT_STYLE_NAME}--seminar`]: isSeminar,},
             )}>
-                {lessonName}
+                <div>
+                    {lessonName}
+                </div>
+                <div>
+                    {place}
+                </div>
             </td>
         </>
     );

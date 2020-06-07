@@ -79,7 +79,7 @@ const NewCourse = (props) => {
                         <form onSubmit={handleSubmit} noValidate>
                             <div className={cn(`${COMPONENT_STYLE_NAME}__main-container`)}>
                                 <div className={cn(`${COMPONENT_STYLE_NAME}__fields-container`)}>
-                                    <UploadImage uploadImage={uploadImage} deleteUrl={deleteUrl} url={url}/>
+                                   {/* <UploadImage uploadImage={uploadImage} deleteUrl={deleteUrl} url={url}/>*/}
                                     <div className={cn(`${COMPONENT_STYLE_NAME}__field-container`)}>
                                         <Field
                                             name="name"

@@ -1,37 +1,41 @@
-import React, {useState} from 'react';
+import React, {useState, memo, useCallback} from 'react';
 import classNames from 'classnames/bind';
-import TableHeader from './TableHeader/TableHeader';
-import Row from './Row/Row';
 import styles from './index.module.scss';
-import {connect} from 'react-redux';
 import {Button} from "@material-ui/core";
-import {TimetableWeek} from '../../../../../types/types';
+import {Action, TimetableWeek} from '../../../../../types/types';
 import {Field, Form} from "react-final-form";
 import {TextField} from "final-form-material-ui";
+import {SimpleTimetable} from "../../../../Common/simple-timetable";
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Table-block';
 
 type PropsType = {
-    timeTableData?: any;
+    timetable: Array<TimetableWeek>;
+    name: string;
+    id: number;
+    rejectTimetable: Action<{ id: number, comment: string }>,
+    approveTimetable: Action<number>,
 };
 
-const AdminTimetable = ({timeTableData}: PropsType) => {
+export const AdminTimetable = memo(({timetable, name, id, rejectTimetable, approveTimetable}: PropsType) => {
     const [isField, setIsField] = useState(false);
     const handleSetIsField = () => {
         setIsField(!isField);
     };
-    const renderRow = timeTableData.map(
-        (obj, index) => <Row rowData={obj} rowNumber={index + 1}
-                             key={index}/>);
+    const handleReject = useCallback((values) => {
+        rejectTimetable({comment: values.answer, id: id});
+    }, [rejectTimetable, id]);
+    const handleApprove = useCallback(() => {
+        approveTimetable(id);
+    }, [approveTimetable, id]);
     return (
         <div className={cn(COMPONENT_STYLE_NAME)}>
-            <h1 className={cn(`${COMPONENT_STYLE_NAME}__table-label`)}>Иванов Иван</h1>
+            <h1 className={cn(`${COMPONENT_STYLE_NAME}__table-label`)}>{name}</h1>
             <div className={cn(`${COMPONENT_STYLE_NAME}__table-container`)}>
-                <table className={cn(`${COMPONENT_STYLE_NAME}__table`)}>
-                    <TableHeader/>
-                    {renderRow}
-                </table>
+                <div className={cn(`${COMPONENT_STYLE_NAME}__table`)}>
+                    <SimpleTimetable timeTableData={timetable}/>
+                </div>
             </div>
             <div className={cn(`${COMPONENT_STYLE_NAME}__buttons-container`)}>
                 <div className={cn(`${COMPONENT_STYLE_NAME}__buttons`)}>
@@ -39,6 +43,7 @@ const AdminTimetable = ({timeTableData}: PropsType) => {
                         variant="contained"
                         color="primary"
                         type="submit"
+                        onClick={handleApprove}
                         /*disabled={submitting}*/
                     >
                         Одобрить
@@ -57,7 +62,7 @@ const AdminTimetable = ({timeTableData}: PropsType) => {
             </div>
             {isField && <div className={cn(`${COMPONENT_STYLE_NAME}__reject-field-container`)}>
                 <Form
-                    onSubmit={() => {}}
+                    onSubmit={handleReject}
                     render={({handleSubmit, submitting, pristine, values}) => (
                         <form onSubmit={handleSubmit} noValidate>
                             <Field
@@ -87,16 +92,4 @@ const AdminTimetable = ({timeTableData}: PropsType) => {
             </div>}
         </div>
     );
-};
-
-type MapStateToPropsType = {
-    timeTableData: Array<TimetableWeek>
-};
-
-const mapStateToProps = (state: any): MapStateToPropsType => {
-    return {
-        timeTableData: state.teacherTimetableReducer.timeTableData
-    }
-};
-
-export default connect(mapStateToProps, null)(AdminTimetable);
+});

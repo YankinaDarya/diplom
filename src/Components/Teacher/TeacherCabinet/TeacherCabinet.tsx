@@ -5,6 +5,8 @@ import prep from '../../../images/prep.jpg';
 import classNames from "classnames/bind";
 import Field from "./Field/Field";
 import { updateTeacherInfoThunk, getTeacherInfoThunk } from '../../../redux/Teacher/thunks';
+import { getTeacherPageLoading } from '../../../redux/Teacher/selectors/teacher-cabinet-selector';
+import {Preloader} from "../../Common/Preloader";
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Teacher-cabinet';
@@ -27,6 +29,7 @@ type MapStatePropsType = {
     rate: string | null;
     sciencedegree: string | null;
     teacherIsAuth: boolean;
+    isTeacherPageLoading: boolean;
 };
 
 type StateType = any;
@@ -188,11 +191,14 @@ class TeacherCabinet extends Component<PropsType, StateType> {
     render() {
         const {firstname, midname, lastname, birthdate, sciencedegree, address, email, telephone, telegram,
             courses, department, passport, position, rate,
-            snils} = this.props;
+            snils, isTeacherPageLoading} = this.props;
         const coursesItem = this.state.courses?.map(item =>
             (<div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>
                 <li>{item}</li>
             </div>));
+        if(isTeacherPageLoading) {
+            return <Preloader />
+        }
         return (
             <div className={cn(COMPONENT_STYLE_NAME)}>
                 <h1 className={cn(`${COMPONENT_STYLE_NAME}__header`)}>
@@ -328,6 +334,7 @@ const mapStateToProps = (state: any): MapStatePropsType => {
         rate: state.teacherReducer.rate,
         sciencedegree: state.teacherReducer.sciencedegree,
         teacherIsAuth: state.teacherReducer.teacherIsAuth,
+        isTeacherPageLoading: getTeacherPageLoading(state),
     }
 };
 

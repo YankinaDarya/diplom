@@ -1,4 +1,10 @@
-import {SET_NEW_STUDENT_DATA, SET_STUDENT_DATA, SET_STUDENT_IS_AUTH, SET_STUDENT_ID_ACTION} from "./actions";
+import {
+    SET_NEW_STUDENT_DATA,
+    SET_STUDENT_DATA,
+    SET_STUDENT_IS_AUTH,
+    SET_STUDENT_ID_ACTION,
+    SET_STUDENT_UNREAD_NOTIFICATIONS_NUMBER, SET_STUDENT_UNREAD_MESSAGES_NUMBER
+} from "./actions";
 
 const initialState = {
     studentId: 0,
@@ -12,6 +18,8 @@ const initialState = {
     courses: [],
     coure: '',
     studentIsAuth: false,
+    studentUnreadNotifNumber: 0,
+    studentUnreadMessagesNumber: 0,
 };
 
 type InitialState = typeof initialState;
@@ -46,6 +54,14 @@ export const studentReducer = (state = initialState, {type, payload}: ActionsTyp
         case SET_STUDENT_ID_ACTION:
             return {
                 ...state, studentId: payload,
+            };
+        case SET_STUDENT_UNREAD_NOTIFICATIONS_NUMBER:
+            return {
+                ...state, studentUnreadNotifNumber: payload,
+            };
+        case SET_STUDENT_UNREAD_MESSAGES_NUMBER:
+            return {
+                ...state, studentUnreadMessagesNumber: payload,
             };
         default:
             return state;

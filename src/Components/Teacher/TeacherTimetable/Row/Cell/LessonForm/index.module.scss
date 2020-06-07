@@ -1,0 +1,18 @@
+.Form {
+  display: flex;
+  &__select-container {
+    width: 300px;
+    margin-bottom: 30px;
+  }
+  &__place-container {
+    width: 300px;
+  }
+  &__type-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  &__buttons-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}

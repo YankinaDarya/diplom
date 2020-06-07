@@ -12,4 +12,10 @@ export const authAPI = {
         return instance.post(`user/unauth/${id}`)
             .then(res => res.data);
     },
+    getUnreadNotificationsNumber(id: number) {
+        return instance.get(`notification/number/${id}`).then(res => res.data);
+    },
+    getUnreadMessagesNumber(id: number) {
+        return instance.get(`message/number/${id}`).then(res => res.data);
+    },
 };

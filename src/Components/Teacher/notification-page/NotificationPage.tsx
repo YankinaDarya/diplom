@@ -1,82 +1,92 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classNames from "classnames/bind";
 import styles from "./NotificationPage.module.scss";
 import Switch from '@material-ui/core/Switch';
+import {getTeacherNotificationsThunk, readTeacherNotificationsThunk} from "../../../redux/Teacher/thunks";
+import {connect} from "react-redux";
+import {
+    getTeacherId,
+    getTeacherNotifications,
+    getTeacherPageLoading
+} from "../../../redux/Teacher/selectors/teacher-cabinet-selector";
+import {Action} from "../../../types/types";
+import {Preloader} from "../../Common/Preloader";
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Notifications';
 
-export const NotificationPage = () => {
-    const [state, setState] = useState({
-        checkedA: false,
-        checkedB: false,
-        checkedC: false,
-    });
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
-    };
+type NotificationType = {
+    from_name: string;
+    from_role: string;
+    id: number;
+    is_read: boolean;
+    notification: string;
+    ts: string;
+};
+
+type PropsType = {
+    id: number;
+    notifications: Array<NotificationType>;
+    getTeacherNotifications: Action<number>;
+    readNotification: Action<number>;
+    isTeacherPageLoading: boolean;
+};
+
+const NotificationPageView = ({notifications, getTeacherNotifications, id, readNotification, isTeacherPageLoading}) => {
+
+    useEffect(() => {
+        getTeacherNotifications(id)
+    }, []);
+
+    if(isTeacherPageLoading) {
+        return <Preloader />
+    }
     return (
         <div className={cn(COMPONENT_STYLE_NAME)}>
             <h1 className={cn(`${COMPONENT_STYLE_NAME}__header`)}>
                 Мои уведомления
             </h1>
-            <div className={cn(`${COMPONENT_STYLE_NAME}__title-container`)}>
-                <div className={cn(`${COMPONENT_STYLE_NAME}__title`)}>
-                    Уведомление 1
-                </div>
-                <div className={cn(`${COMPONENT_STYLE_NAME}__switch-container`)}>
+            {notifications.map((not, index) => <>
+                    <div className={cn(`${COMPONENT_STYLE_NAME}__title-container`)}>
+                        <div className={cn(`${COMPONENT_STYLE_NAME}__title`)}>
+                            {`Уведомление ${index + 1}`}
+                        </div>
+                        <div className={cn(`${COMPONENT_STYLE_NAME}__switch-container`)}>
                     <span className={cn(`${COMPONENT_STYLE_NAME}__switch-title`)}>
                         Прочитано
                     </span>
-                    <Switch
-                        checked={state.checkedA}
-                        onChange={handleChange}
-                        name="checkedA"
-                        inputProps={{ 'aria-label': 'secondary checkbox' }}
-                    />
-                </div>
-            </div>
-            <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
-                Студент Иван Иванович Петров сдал 1 задание по курсу веб-разработка
-            </div>
-            <div className={cn(`${COMPONENT_STYLE_NAME}__title-container`)}>
-            <div className={cn(`${COMPONENT_STYLE_NAME}__title`)}>
-                Уведомление 2
-            </div>
-            <div className={cn(`${COMPONENT_STYLE_NAME}__switch-container`)}>
-                    <span className={cn(`${COMPONENT_STYLE_NAME}__switch-title`)}>
-                        Прочитано
-                    </span>
-                <Switch
-                    checked={state.checkedB}
-                    onChange={handleChange}
-                    name="checkedB"
-                    inputProps={{ 'aria-label': 'secondary checkbox' }}
-                />
-            </div>
-            </div>
-            <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
-                Студент Константин Сидоров сдал 1 задание по курсу веб-разработка
-            </div>
-            <div className={cn(`${COMPONENT_STYLE_NAME}__title-container`)}>
-            <div className={cn(`${COMPONENT_STYLE_NAME}__title`)}>
-                Уведомление 3
-            </div>
-            <div className={cn(`${COMPONENT_STYLE_NAME}__switch-container`)}>
-                    <span className={cn(`${COMPONENT_STYLE_NAME}__switch-title`)}>
-                        Прочитано
-                    </span>
-                <Switch
-                    checked={state.checkedC}
-                    onChange={handleChange}
-                    name="checkedC"
-                    inputProps={{ 'aria-label': 'secondary checkbox' }}
-                />
-            </div>
-            </div>
-            <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
-                Студент Елена Смирнова сдал 1 задание по курсу веб-разработка
-            </div>
+                            <Switch
+                                checked={not.is_read}
+                                onChange={() => {readNotification(not.id, id)}}
+                                name="checkedA"
+                                inputProps={{'aria-label': 'secondary checkbox'}}
+                            />
+                        </div>
+                    </div>
+                    <div className={cn(`${COMPONENT_STYLE_NAME}__data`)}>
+                        <div className={cn(`${COMPONENT_STYLE_NAME}__name-block`)}>
+                            {Boolean(not.from_role) ? `От: ${not.from_name} ${not.from_role}` : `От ${not.from_name}`}
+                        </div>
+                        <div className={cn(`${COMPONENT_STYLE_NAME}__date-block`)}>
+                            {not.ts}
+                        </div>
+                    </div>
+                    <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
+                        {not.notification}
+                    </div>
+                </>
+            )}
         </div>
     );
 };
+
+const mapStateToProps = (state) => ({
+    notifications: getTeacherNotifications(state),
+    id: getTeacherId(state),
+    isTeacherPageLoading: getTeacherPageLoading(state),
+});
+
+export default connect(mapStateToProps, {
+    getTeacherNotifications: getTeacherNotificationsThunk,
+    readNotification: readTeacherNotificationsThunk,
+})(NotificationPageView);

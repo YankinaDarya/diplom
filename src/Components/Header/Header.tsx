@@ -1,13 +1,14 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import style from './Header.module.scss';
-import logo from '../../images/lms4.png';
+import logo from '../../images/lms5.png';
 import prep from '../../images/prep.jpg';
 import { connect } from 'react-redux';
 import {getTeacherId, getTeacherIsAuth} from '../../redux/Teacher/selectors/teacher-cabinet-selector';
 import {getStudentId, getStudentIsAuth} from "../../redux/student/cabinet-module/selectors";
 import {getAdminId, getAdminIsAuth} from "../../redux/admin/selectors";
 import {logoutThunk} from "../../redux/auth/thunks";
+import { Link } from 'react-router-dom';
 
 type PropsType = {
     logout: (id: number) => void;
@@ -37,11 +38,11 @@ const HeaderView = ({logout, teacherId, studentId,
         <header className={style.header}>
             <img src={logo} alt="logo" className={style.logo}/>
             <div className={style.outBlock} onClick={resetAuthorization}>
-                ИВАН
-                <img src={prep} alt="prep" className={style.avatar}/>
+                <Link to='/'>
                 <Button variant="contained" color="primary">
                     Выход
                 </Button>
+                </Link>
             </div>
         </header>
     );

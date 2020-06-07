@@ -1,7 +1,13 @@
 import {
     SET_ADMIN_IS_AUTH,
     SET_SUCCESS_ADD_ACTION,
-    SET_ERROR_ADD_ACTION, SET_START_ADDING_ACTION, SET_STOP_ADDING_ACTION, SET_ADMIN_ID,
+    SET_ERROR_ADD_ACTION,
+    SET_START_ADDING_ACTION,
+    SET_STOP_ADDING_ACTION,
+    SET_ADMIN_ID,
+    SET_START_ADMIN_PAGE_LOADING,
+    SET_STOP_ADMIN_PAGE_LOADING,
+    SET_TIMETABLES_ACTION,
 } from "./actions";
 
 const initialState = {
@@ -10,6 +16,8 @@ const initialState = {
     errorAddMessage: '',
     isSuccessAdd: false,
     isAdding: false,
+    isAdminPageLoading: false,
+    timeTables: [],
 };
 
 type InitialState = typeof initialState;
@@ -45,6 +53,19 @@ export const adminAuthReducer = (state = initialState, {type, payload}: ActionsT
         case SET_STOP_ADDING_ACTION:
             return {
                 ...state, isAdding: false,
+            };
+        case SET_START_ADMIN_PAGE_LOADING:
+            return {
+              ...state, isAdminPageLoading: true,
+            };
+        case SET_STOP_ADMIN_PAGE_LOADING:
+            return {
+                ...state, isAdminPageLoading: false,
+            };
+        case SET_TIMETABLES_ACTION:
+            return {
+                // @ts-ignore
+                ...state, timeTables: [...state.timeTables, payload],
             };
         default:
             return state;

@@ -9,9 +9,11 @@ import MailIcon from '@material-ui/icons/Mail';
 type PropsType = {
     teacherIsAuth: boolean;
     studentIsAuth: boolean;
+    messages: number;
+    notifications: number;
 };
 
-const Navbar = ({teacherIsAuth, studentIsAuth}: PropsType) => {
+const Navbar = ({teacherIsAuth, studentIsAuth, messages, notifications}: PropsType) => {
     return (
         <nav className={style.nav}>
             <div className={style.menuBlock}>
@@ -35,21 +37,23 @@ const Navbar = ({teacherIsAuth, studentIsAuth}: PropsType) => {
                     <div className={`${style.item} ${style.active}`}>
                         <NavLink to="/notifications" activeClassName={style.activeLink}>
                             Уведомления
-                            <IconButton aria-label="show 11 new notifications" color="inherit">
-                                <Badge badgeContent={3} color="secondary">
+                            {Boolean(notifications) && (<IconButton aria-label="show 11 new notifications" color="inherit">
+                                <Badge badgeContent={notifications} color="secondary">
                                     <NotificationsIcon />
                                 </Badge>
-                            </IconButton>
+                            </IconButton>)}
                         </NavLink>
                     </div>
                     <div className={`${style.item} ${style.active}`}>
                         <NavLink to="/messages" activeClassName={style.activeLink}>
                             Сообщения
-                            <IconButton aria-label="show 11 new notifications" color="inherit">
-                                <Badge badgeContent={1} color="secondary">
-                                    <MailIcon />
-                                </Badge>
-                            </IconButton>
+                            {Boolean(messages) && (
+                                <IconButton aria-label="show 11 new notifications" color="inherit">
+                                    <Badge badgeContent={messages} color="secondary">
+                                        <MailIcon />
+                                    </Badge>
+                                </IconButton>
+                            )}
                         </NavLink>
                     </div>
                 </>)}

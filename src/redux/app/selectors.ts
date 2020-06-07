@@ -9,3 +9,8 @@ export const getAppInitialized = createSelector(getStudentInfo,
     (appInfo) => {
         return appInfo.appInitialized;
     });
+
+export const getAppIsLoading = createSelector(getStudentInfo,
+    (appInfo) => {
+        return appInfo.isLoading;
+    });

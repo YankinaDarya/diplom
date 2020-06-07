@@ -10,7 +10,7 @@ import {
     setCourseInfoAction,
     setCourseNotificationsAction,
     setCoursePlanAction, setCourseStudentsInfoAction,
-    setStartLoadingCoursePageAction, setStopLoadingCoursePageAction
+    setStartLoadingCoursePageAction, setStartTeacherPageLoading, setStopLoadingCoursePageAction, setStopTeacherPageLoading
 } from "../../Teacher/actions";
 
 type PropsType = {
@@ -70,13 +70,16 @@ export const getCourseStudentsInfoThunk = (id: number): any =>
 
 export const getALLCourseInfoThunk = (id: number): any =>
     (dispatch) => {
-        dispatch(setStartLoadingCoursePageAction());
+        dispatch(setStartTeacherPageLoading());
+       /* dispatch(setStartLoadingCoursePageAction());*/
         const promise = dispatch(getCourseInfoThunk(id));
         const promise2 = dispatch(getCoursePlanThunk(id));
         const promise3 = dispatch(getCourseNotificationsThunk(id));
         const promise4 = dispatch(getCourseStudentsInfoThunk(id));
         Promise.all([promise, promise2, promise3, promise4])
             .then(() => {
-                dispatch(setStopLoadingCoursePageAction());
+                dispatch(setStopTeacherPageLoading());
+               /* dispatch(setStopLoadingCoursePageAction());*/
             });
+        /*dispatch(setStopTeacherPageLoading());*/
     };

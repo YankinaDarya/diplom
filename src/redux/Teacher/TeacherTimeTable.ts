@@ -7,7 +7,6 @@ import {
     STOP_LOADING_TEACHER_TIMETABLE_PAGE_ACTION,
     UPDATE_TIMETABLE
 } from "./actions";
-import {emptyApprovedTimetableData, emptyTimetableData} from "./consts";
 
 type StateType = {
     timeTableData: Array<TimetableWeek>

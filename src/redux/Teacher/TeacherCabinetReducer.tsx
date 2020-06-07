@@ -1,4 +1,15 @@
-import {SET_TEACHER_ID_ACTION, SET_TEACHER_IS_AUTH, SET_NEW_TEACHER_DATA, SET_TEACHER_DATA} from './actions';
+import {
+    SET_TEACHER_ID_ACTION,
+    SET_TEACHER_IS_AUTH,
+    SET_NEW_TEACHER_DATA,
+    SET_TEACHER_DATA,
+    SET_TEACHER_UNREAD_NOTIFICATIONS_NUMBER,
+    SET_TEACHER_UNREAD_MESSAGES_NUMBER,
+    SET_ALL_TEACHER_NOTIFICATIONS,
+    SET_ALL_TEACHER_MESSAGES,
+    SET_START_TEACHER_PAGE_LOADING,
+    SET_STOP_TEACHER_PAGE_LOADING
+} from './actions';
 
 const initialState = {
     teacherId: 0,
@@ -18,6 +29,11 @@ const initialState = {
     rate: '',
     sciencedegree : '',
     teacherIsAuth: false,
+    unreadNotifications: 0,
+    unreadMessages: 0,
+    teacherNotifications: [],
+    teacherMessages: [],
+    isTeacherPageLoading: false,
 };
 
 type InitialState = typeof initialState;
@@ -73,6 +89,30 @@ export const teacherReducer = (state = initialState, {type, payload}: ActionsTyp
         case SET_TEACHER_ID_ACTION:
             return {
                 ...state, teacherId: payload,
+            };
+        case SET_TEACHER_UNREAD_NOTIFICATIONS_NUMBER:
+            return {
+                ...state, unreadNotifications: payload,
+            };
+        case SET_TEACHER_UNREAD_MESSAGES_NUMBER:
+            return {
+                ...state, unreadMessages: payload,
+            };
+        case SET_ALL_TEACHER_NOTIFICATIONS:
+            return {
+                ...state, teacherNotifications: payload,
+            };
+        case SET_ALL_TEACHER_MESSAGES:
+            return {
+                ...state, teacherMessages: payload,
+            };
+        case SET_START_TEACHER_PAGE_LOADING:
+            return {
+                ...state, isTeacherPageLoading: true,
+            };
+        case SET_STOP_TEACHER_PAGE_LOADING:
+            return {
+                ...state, isTeacherPageLoading: false,
             };
         default:
             return state;

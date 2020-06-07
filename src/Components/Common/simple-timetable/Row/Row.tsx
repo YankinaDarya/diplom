@@ -17,6 +17,7 @@ const Row = ({rowData, rowNumber}: PropsType): JSX.Element => {
         name: string,
         isLecture: boolean,
         isSeminar: boolean,
+        place: string;
     }> = Object.keys(rowData).map(
         key => rowData[key]
     );
@@ -25,7 +26,9 @@ const Row = ({rowData, rowNumber}: PropsType): JSX.Element => {
                                lessonNumber={rowNumber} isLecture={cell.isLecture}
                                isSeminar={cell.isSeminar}
                                lessonName={cell.name}
-                               key={index}/>);
+                               key={index}
+                               place={cell.place}
+        />);
     return (<tbody>
     <tr>
         <td className={cn(COMPONENT_STYLE_NAME)}>{rowNumber} пара</td>

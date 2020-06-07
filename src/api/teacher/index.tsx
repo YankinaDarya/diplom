@@ -21,4 +21,22 @@ export const teacherAPI = {
     sentTeacherTimetable(payload: any) {
         return instance.post(`schedule`, {...payload}).then(res => res.data);
     },
+    getTeacherNotifications(id: number) {
+        return instance.get(`notification/${id}`).then(res => res.data);
+    },
+    getTeacherMessages(id: number) {
+        return instance.get(`message/${id}`).then(res => res.data);
+    },
+    readTeacherNotification(id: number) {
+        return instance.post(`/notification/read/${id}`, {}).then(res => res.data);
+    },
+    readTeacherMessage(id: number) {
+        return instance.post(`/message/read/${id}`, {}).then(res => res.data);
+    },
+    updateWeek(id: number, payload: any) {
+        return instance.put(`/course/week/${id}`, {...payload}).then(res => res.data);
+    },
+    sentNotification(payload: any) {
+        return instance.post(`/course/notification`, {...payload}).then(res => res.data);
+    }
 };

@@ -31,6 +31,10 @@
     &__item {
         margin: 15px;
     }
+    &__notif-container {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
     &__form-container {
         box-shadow: 0 0 3px 3px #9f9f9f;
         border: 2px solid #4a4a4a;
@@ -39,6 +43,9 @@
         width: 94%;
         padding: 20px;
         margin-top: 30px;
+    }
+    &__notif-date {
+        color: #ff0058;
     }
     &__submit-button {
         margin-top: 20px;

@@ -12,14 +12,14 @@ type PropsType = {
     course: CourseType;
 };
 
-const Course = ({course}: PropsType): JSX.Element => {
+const Course = ({course}: PropsType) => {
     const {id, name, imgurl, info, teacher, schedule} = course;
     return (
         <div className={cn(COMPONENT_STYLE_NAME)}>
             <h2 className={cn(`${COMPONENT_STYLE_NAME}__title`)}>{name}</h2>
             <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
-                <img src={imgurl} alt="web"
-                     className={cn(`${COMPONENT_STYLE_NAME}__image`)} />
+                {/*<img src={imgurl} alt="web"
+                     className={cn(`${COMPONENT_STYLE_NAME}__image`)} />*/}
                 <div className={cn(`${COMPONENT_STYLE_NAME}__info`)}>
                     <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>
                         <i>Информация о курсе:</i>
@@ -27,7 +27,7 @@ const Course = ({course}: PropsType): JSX.Element => {
                             {info}
                         </span>
                     </div>
-                    {Boolean(schedule.length) && (
+                    {Boolean(schedule) && Boolean(schedule.length) && (
                         <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}>
                             <i>Время и место проведения:</i>
                             <span className={cn(`${COMPONENT_STYLE_NAME}__text`)}>

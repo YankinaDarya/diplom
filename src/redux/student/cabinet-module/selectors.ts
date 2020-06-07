@@ -52,3 +52,11 @@ export const getStudentCourse = createSelector(getStudentInfo,
     (studentInfo) => {
         return studentInfo.coure
     });
+export const getStudentMessagesNumber = createSelector(getStudentInfo,
+    (studentInfo) => {
+        return studentInfo.studentUnreadMessagesNumber
+    });
+export const getStudentNotifNumber = createSelector(getStudentInfo,
+    (studentInfo) => {
+        return studentInfo.studentUnreadMessagesNumber
+    });

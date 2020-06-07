@@ -18,7 +18,6 @@ export const SimpleTimetable = ({timeTableData}: PropsType) => {
                              key={index}/>);
     return (
         <div className={cn(COMPONENT_STYLE_NAME)}>
-            <h1 className={cn(`${COMPONENT_STYLE_NAME}__table-label`)}>Мое расписание</h1>
             <div className={cn(`${COMPONENT_STYLE_NAME}__table-container`)}>
                 <table className={cn(`${COMPONENT_STYLE_NAME}__table`)}>
                     <TableHeader/>

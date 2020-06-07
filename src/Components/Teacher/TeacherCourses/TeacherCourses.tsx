@@ -8,8 +8,8 @@ import {CourseType} from "../../../redux/Teacher/TeacherCoursesReducer";
 import classNames from "classnames/bind";
 import {Link} from "react-router-dom";
 import {getTeacherCoursesThunk} from "../../../redux/Teacher/thunks";
-import {getTeacherId} from "../../../redux/Teacher/selectors/teacher-cabinet-selector";
-import {getCourseInfoThunk} from "../../../redux/student/courses-module/thunks";
+import {getTeacherId, getTeacherPageLoading} from "../../../redux/Teacher/selectors/teacher-cabinet-selector";
+import {Preloader} from "../../Common/Preloader";
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'All-courses-page';
@@ -18,12 +18,16 @@ type PropsType = {
     id: number;
     courses: Array<CourseType>;
     getCourses: (id: number) => void;
+    isTeacherPageLoading: boolean;
 };
 
-const TeacherCoursesView = ({id, courses, getCourses}: PropsType): JSX.Element => {
+const TeacherCoursesView = ({id, courses, getCourses, isTeacherPageLoading}: PropsType): JSX.Element => {
     useEffect(() => {getCourses(id)}, []);
     const renderCourses = courses.map(
         (course) => <Course course={course} />);
+    if(isTeacherPageLoading) {
+        return <Preloader />
+    }
     return (
         <div className={cn(COMPONENT_STYLE_NAME)}>
             <h1 className={cn(`${COMPONENT_STYLE_NAME}__h1`)}>
@@ -45,6 +49,7 @@ const TeacherCoursesView = ({id, courses, getCourses}: PropsType): JSX.Element =
 const mapStateToProps = (state) => ({
     courses: state.teacherCoursesReducer.courses,
     id: getTeacherId(state),
+    isTeacherPageLoading: getTeacherPageLoading(state),
 });
 
 export default connect(mapStateToProps, {getCourses: getTeacherCoursesThunk})(TeacherCoursesView);
