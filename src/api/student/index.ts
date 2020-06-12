@@ -19,4 +19,16 @@ export const studentAPI = {
     getStudentTimetable(id: number) {
         return instance.get(`schedule/student/${id}`).then(res => res.data);
     },
+    getStudentNotifications(id: number) {
+        return instance.get(`notification/${id}`).then(res => res.data);
+    },
+    getStudentMessages(id: number) {
+        return instance.get(`message/${id}`).then(res => res.data);
+    },
+    readStudentNotification(id: number) {
+        return instance.post(`/notification/read/${id}`, {}).then(res => res.data);
+    },
+    readStudentMessage(id: number) {
+        return instance.post(`/message/read/${id}`, {}).then(res => res.data);
+    },
 };

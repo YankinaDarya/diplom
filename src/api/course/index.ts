@@ -25,4 +25,13 @@ export const courseAPI = {
     getCourseNotifications(id: number) {
         return instance.get(`course/notification/${id}`).then(res => res.data);
     },
+    getAllStudentCourses(id: number) {
+        return instance.get(`course/student/${id}`).then(res => res.data);
+    },
+    enrollCourse(courseId: number, studentId: number) {
+        return instance.post(`course/student`, {
+            course_id: courseId,
+            student_id: studentId,
+        }).then(res => res.data);
+    },
 };

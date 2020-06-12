@@ -1,0 +1,21 @@
+.All-сourses {
+  padding-top: 25px;
+  padding-left: 50px;
+  &__header-container {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 95%;
+  }
+  &__my-courses {
+    font-size: 36px;
+    color: black;
+    font-weight: bold;
+  }
+  &__link {
+    font-size: 24px;
+    color: #812784;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

@@ -21,3 +21,9 @@ export const setSuccessCreateCourseAction: Action<boolean> = payload => ({type: 
 
 export const SET_ERROR_CREAT_COURSE_ACTION = 'SET_ERROR_CREAT_COURSE_ACTION';
 export const setErrorCreateCourseAction: Action<string> = payload => ({type: SET_ERROR_CREAT_COURSE_ACTION, payload});
+
+export const SET_STUDENT_COURSES = 'SET_STUDENT_COURSES';
+export const setStudentCoursesAction: Action<string> = payload => ({type: SET_STUDENT_COURSES, payload});
+
+export const SET_ALL_COURSES = 'SET_ALL_COURSES';
+export const setAllCoursesAction: Action<string> = payload => ({type: SET_ALL_COURSES, payload});

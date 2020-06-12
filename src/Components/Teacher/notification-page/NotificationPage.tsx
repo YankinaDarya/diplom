@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import classNames from "classnames/bind";
 import styles from "./NotificationPage.module.scss";
 import Switch from '@material-ui/core/Switch';

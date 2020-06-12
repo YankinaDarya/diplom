@@ -4,7 +4,7 @@ import {
     setSuccessCreateCourseAction,
     setErrorCreateCourseAction,
     startCreatingNewCourseAction,
-    stopCreatingNewCourseAction
+    stopCreatingNewCourseAction, setStudentCoursesAction, setAllCoursesAction
 } from "./actions";
 import {
     setCourseInfoAction,
@@ -12,6 +12,7 @@ import {
     setCoursePlanAction, setCourseStudentsInfoAction,
     setStartLoadingCoursePageAction, setStartTeacherPageLoading, setStopLoadingCoursePageAction, setStopTeacherPageLoading
 } from "../../Teacher/actions";
+import {setStartStudentPageLoading, setStopStudentPageLoading} from "../cabinet-module/actions";
 
 type PropsType = {
     id: number;
@@ -82,4 +83,35 @@ export const getALLCourseInfoThunk = (id: number): any =>
                /* dispatch(setStopLoadingCoursePageAction());*/
             });
         /*dispatch(setStopTeacherPageLoading());*/
+    };
+
+export const getALLStudentCoursesThunk = (id: number): any =>
+    (dispatch) => {
+        dispatch(setStartStudentPageLoading());
+        courseAPI.getAllStudentCourses(id).then((response => {
+            if (response) {
+                dispatch(setStudentCoursesAction(response));
+                dispatch(setStopStudentPageLoading());
+            }
+    }))
+};
+
+export const getALLCoursesThunk = (id: number): any =>
+    (dispatch) => {
+        dispatch(setStartStudentPageLoading());
+        courseAPI.getAllCourses().then((response => {
+            if (response) {
+                dispatch(setAllCoursesAction(response.data));
+                dispatch(setStopStudentPageLoading());
+            }
+        }))
+    };
+
+export const enrollCourseThunk = (courseId: number, studentId: number): any =>
+    (dispatch) => {
+        courseAPI.enrollCourse(courseId, studentId).then((response => {
+            if (response) {
+                dispatch(getALLCoursesThunk(studentId));
+            }
+        }))
     };

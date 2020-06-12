@@ -25,7 +25,7 @@ import NewCourse from './Components/Teacher/new-course/new-course';
 import NotificationPage from "./Components/Teacher/notification-page/NotificationPage";
 import {Messages} from './Components/Teacher/messages/messages';
 import StudentTimetable from "./Components/student/student-timetable/student-timetable";
-import {StudentNotifications} from './Components/student/student-notifications/student-notifications';
+import StudentNotifications from './Components/student/student-notifications/student-notifications';
 import AdminCabinet from './Components/admin/admin-cabinet';
 import {getAdminIsAuth} from "./redux/admin/selectors";
 import {initializeAppThunk} from "./redux/app/thunks";
@@ -88,6 +88,7 @@ const AppView = ({
                            render={() => <StudentCoursePage/>}/>
                     <Route exact path="/student/timetable" render={() => <StudentTimetable/>}/>
                     <Route exact path="/student/notifications" render={() => <StudentNotifications/>}/>
+                    <Route exact path="/student/messages" render={() => <div/>}/>
                 </div>
             </div>)}
             {adminIsAuth && (<div>

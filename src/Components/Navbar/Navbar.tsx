@@ -77,11 +77,23 @@ const Navbar = ({teacherIsAuth, studentIsAuth, messages, notifications}: PropsTy
                     <div className={`${style.item} ${style.active}`}>
                         <NavLink to="/student/notifications" activeClassName={style.activeLink}>
                             Уведомления
-                            <IconButton aria-label="show 11 new notifications" color="inherit">
-                                <Badge badgeContent={1} color="secondary">
+                            {Boolean(notifications) && (<IconButton aria-label="show 11 new notifications" color="inherit">
+                                <Badge badgeContent={notifications} color="secondary">
                                     <NotificationsIcon />
                                 </Badge>
-                            </IconButton>
+                            </IconButton>)}
+                        </NavLink>
+                    </div>
+                    <div className={`${style.item} ${style.active}`}>
+                        <NavLink to="/student/messages" activeClassName={style.activeLink}>
+                            Сообщения
+                            {Boolean(messages) && (
+                                <IconButton aria-label="show 11 new notifications" color="inherit">
+                                    <Badge badgeContent={messages} color="secondary">
+                                        <MailIcon />
+                                    </Badge>
+                                </IconButton>
+                            )}
                         </NavLink>
                     </div>
                 </>)}

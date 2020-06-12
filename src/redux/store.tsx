@@ -8,6 +8,7 @@ import thunkMiddleware from "redux-thunk";
 import { adminAuthReducer } from "./admin/reducer";
 import {appReducer} from "./app/reducer";
 import {studentTimetableReducer} from "./student/timetable-module/reducer";
+import {studentNotificationsReducer} from "./student/notifications-module/reducer";
 
 const rootReducer = combineReducers({
     teacherReducer: teacherReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     adminReducer: adminAuthReducer,
     appReducer: appReducer,
     studentTimetableReducer: studentTimetableReducer,
+    studentNotificationsReducer: studentNotificationsReducer,
 });
 
 type RootReducerType = typeof rootReducer;

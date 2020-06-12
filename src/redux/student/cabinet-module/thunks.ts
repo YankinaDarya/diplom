@@ -21,13 +21,15 @@ export const getStudentAllInfoThunk = (id: number): any =>
         }));
     };
 
-export const getStudentCoursesThunk = (id: number): any =>
+export const getStudentNotificationsThunk = (id: number): any =>
     (dispatch) => {
         dispatch(setStartStudentPageLoading());
-        studentAPI.getAllInfo(id).then((response => {
+        studentAPI.getStudentNotifications(id).then((response => {
             if (response) {
                 dispatch(setStudentData(response));
                 dispatch(setStopStudentPageLoading());
             }
         }));
     };
+
+

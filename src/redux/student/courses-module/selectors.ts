@@ -19,3 +19,13 @@ export const getErrorCourseCreatingMessage = createSelector(getCoursesInfo,
     (courses) => {
         return courses.errorCreateCourseMessage;
     });
+
+export const getStudentCourses = createSelector(getCoursesInfo,
+    (courses) => {
+        return courses.studentCourses;
+    });
+
+export const getAllCourses = createSelector(getCoursesInfo,
+    (courses) => {
+        return courses.allCourses;
+    });
