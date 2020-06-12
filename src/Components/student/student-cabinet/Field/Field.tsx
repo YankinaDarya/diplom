@@ -32,7 +32,7 @@ const Field = ({ onChange, defaultValue, onClickSave, title}: PropsType): JSX.El
         {title}
         {editMode ?
             <span className={cn(`${COMPONENT_STYLE_NAME}__input-container`)}>
-                <TextField id="outlined-basic" defaultValue={defaultValue} name="fullName"
+                <TextField id="outlined-basic" defaultValue={defaultValue}
                            onChange={onChange}
                 />
                 <SaveOutlinedIcon onClick={saveNewData}/>

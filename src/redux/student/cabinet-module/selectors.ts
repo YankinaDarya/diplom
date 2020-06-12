@@ -15,22 +15,36 @@ export const getStudentId = createSelector(getStudentInfo,
         return studentInfo.studentId;
     });
 
-export const getStudentName = createSelector(getStudentInfo,
+export const getStudentLastname = createSelector(getStudentInfo,
     (studentInfo) => {
-        return studentInfo.fullName
+        return studentInfo.lastname
+    });
+
+export const getStudentMidname = createSelector(getStudentInfo,
+    (studentInfo) => {
+        return studentInfo.midname
+    });
+
+export const getStudentFirstname = createSelector(getStudentInfo,
+    (studentInfo) => {
+        return studentInfo.firstname
     });
 
 export const getStudentBirth = createSelector(getStudentInfo,
     (studentInfo) => {
-        return studentInfo.birthDate
+        return studentInfo.birthdate
     });
-export const getStudentPassport = createSelector(getStudentInfo,
+export const getStudentFaculty = createSelector(getStudentInfo,
     (studentInfo) => {
-        return studentInfo.passport
+        return studentInfo.faculty
     });
-export const getStudentSnils = createSelector(getStudentInfo,
+export const getStudentPhone = createSelector(getStudentInfo,
     (studentInfo) => {
-        return studentInfo.snils
+        return studentInfo.phone
+    });
+export const getStudentTelegram = createSelector(getStudentInfo,
+    (studentInfo) => {
+        return studentInfo.telegram
     });
 export const getStudentDepartment = createSelector(getStudentInfo,
     (studentInfo) => {
@@ -44,13 +58,17 @@ export const getStudentEmail = createSelector(getStudentInfo,
     (studentInfo) => {
         return studentInfo.email
     });
+export const getStudentGroup = createSelector(getStudentInfo,
+    (studentInfo) => {
+        return studentInfo.group
+    });
 export const getStudentCourses = createSelector(getStudentInfo,
     (studentInfo) => {
         return studentInfo.courses
     });
 export const getStudentCourse = createSelector(getStudentInfo,
     (studentInfo) => {
-        return studentInfo.coure
+        return studentInfo.course
     });
 export const getStudentMessagesNumber = createSelector(getStudentInfo,
     (studentInfo) => {
@@ -59,4 +77,8 @@ export const getStudentMessagesNumber = createSelector(getStudentInfo,
 export const getStudentNotifNumber = createSelector(getStudentInfo,
     (studentInfo) => {
         return studentInfo.studentUnreadMessagesNumber
+    });
+export const getStudentPageLoading = createSelector(getStudentInfo,
+    (studentInfo) => {
+        return studentInfo.isStudentPageLoading
     });

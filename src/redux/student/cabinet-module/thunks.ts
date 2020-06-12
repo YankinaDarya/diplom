@@ -1,45 +1,33 @@
-/*import {loginStudent, getStudentInfo} from "../../../api/student";
-import { studentLoginType } from "./types";
-
-export const getStudentInfoThunk = (): any =>
-    (dispatch) => {
-        getStudentInfo()
-            .then((response => {
-                if (response === null) {
-                }
-            }))
-    };
-
-export const studentLoginThunk = ({login, password}: studentLoginType): any =>
-    (dispatch) => {
-        loginStudent(login, password)
-            .then((response => {
-                if (response === null) {
-                    getStudentInfoThunk();
-                }
-            }))
-    };*/
-
 import { studentAPI } from "../../../api/student";
-import {studentLoginType} from "./types";
-import {setStudentIdAction, setStudentIsAuth} from "./actions";
+import {setNewStudentData, setStartStudentPageLoading, setStopStudentPageLoading, setStudentData} from "./actions";
 
-export const getStudentInfoThunk = (): any =>
+export const updateStudentInfoThunk = (id: number, payload: any): any =>
     (dispatch) => {
-        studentAPI.getStudentInfo().then((response => {
-            if (response.data) {
-                dispatch(setStudentIdAction(response.data[0].id));
-                dispatch(setStudentIsAuth(true));
+        studentAPI.updateInfo(id, payload).then((response => {
+            if (response === "OK") {
+                dispatch(setNewStudentData(payload));
             }
         }))
     };
 
-export const studentLoginThunk = ({login, password}: studentLoginType): any =>
+export const getStudentAllInfoThunk = (id: number): any =>
     (dispatch) => {
-        studentAPI.login(login, password)
-            .then((response => {
-                if (response === "OK") {
-                    dispatch(getStudentInfoThunk());
-                }
-            }))
+        dispatch(setStartStudentPageLoading());
+        studentAPI.getAllInfo(id).then((response => {
+            if (response) {
+                dispatch(setStudentData(response));
+                dispatch(setStopStudentPageLoading());
+            }
+        }));
+    };
+
+export const getStudentCoursesThunk = (id: number): any =>
+    (dispatch) => {
+        dispatch(setStartStudentPageLoading());
+        studentAPI.getAllInfo(id).then((response => {
+            if (response) {
+                dispatch(setStudentData(response));
+                dispatch(setStopStudentPageLoading());
+            }
+        }));
     };
