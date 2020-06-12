@@ -5,9 +5,10 @@ import StudentsRow from "./StudentsTable/StudentsRow";
 
 type PropsType = {
     students: Array<Students>;
+    courseId: number;
 };
 
-const StudentsTable = ({students}: PropsType): JSX.Element => {
+const StudentsTable = ({students, courseId}: PropsType): JSX.Element => {
     const studentRow = students.map(({
                                          student_id, firstname, lastname,
                                          hw,
@@ -18,6 +19,7 @@ const StudentsTable = ({students}: PropsType): JSX.Element => {
                                                                homeworks={hw}
                                                                group={group}
                                                                index={index + 1}
+                                                               courseId={courseId}
     />);
     return (
         <table className={style.table}>

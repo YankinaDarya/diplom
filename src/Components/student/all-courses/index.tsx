@@ -22,7 +22,7 @@ type PropsType = {
 };
 
 const AllCoursesView = ({allCourses, isLoading, getALLCourses, enroll, studentId}: PropsType) => {
-    useEffect(() => getALLCourses(), []);
+    useEffect(() => getALLCourses(studentId), []);
     if(isLoading) {
         return <Preloader />
     }

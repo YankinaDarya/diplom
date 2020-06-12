@@ -1,50 +1,10 @@
 .Messages {
   padding-top: 20px;
   padding-left: 50px;
+  padding-bottom: 20px;
   &__header {
     font-size: 36px;
   }
-  &__title {
-    color: #1976d2;
-    text-shadow: 0 0 1px gray;
-    font-size: 32px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    font-style: italic;
-  }
-  &__data-block {
-    box-shadow: 0 0 3px 3px #9f9f9f;
-    border: 2px solid #4a4a4a;
-    border-radius: 2px;
-    display: flex;
-    background-color: white;
-    width: 95%;
-    align-items: center;
-    padding: 20px;
-    font-size: 24px;
-    justify-content: space-between;
-  }
-  &__title-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  &__switch-container {
-    margin-right: 25px;
-  }
-  &__switch-title {
-    font-size: 18px;
-  }
-  &__form-container {
-    box-shadow: 0 0 3px 3px #9f9f9f;
-    border: 2px solid #4a4a4a;
-    border-radius: 2px;
-    background-color: white;
-    width: 94%;
-    padding: 20px;
-    margin-top: 30px;
-  }
-  &__submit-button {
-    margin-top: 20px;
+  &__chain-block {
   }
 }

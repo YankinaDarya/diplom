@@ -38,5 +38,21 @@ export const teacherAPI = {
     },
     sentNotification(payload: any) {
         return instance.post(`/course/notification`, {...payload}).then(res => res.data);
-    }
+    },
+    sentMark(courseId: number, mark: number, studentId: number, weekNum: number) {
+        return instance.put(`/course/hw`, {
+            mark,
+            course_id: courseId,
+            student_id: studentId,
+            week_num: weekNum,
+        }).then(res => res.data);
+    },
+    sentComment(courseId: number, comment: string, studentId: number, weekNum: number) {
+        return instance.post(`/course/hw/comm`, {
+            comment,
+            course_id: courseId,
+            student_id: studentId,
+            week_num: weekNum,
+        }).then(res => res.data);
+    },
 };

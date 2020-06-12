@@ -27,3 +27,6 @@ export const setStudentCoursesAction: Action<string> = payload => ({type: SET_ST
 
 export const SET_ALL_COURSES = 'SET_ALL_COURSES';
 export const setAllCoursesAction: Action<string> = payload => ({type: SET_ALL_COURSES, payload});
+
+export const SET_STUDENT_HOMEWORKS = 'SET_STUDENT_HOMEWORKS';
+export const setStudentHomeworksAction: Action<any> = payload => ({type: SET_STUDENT_HOMEWORKS, payload});

@@ -13,7 +13,7 @@ import {
     setAllTeacherMessagesAction,
     setStartTeacherPageLoading, setStopTeacherPageLoading
 } from "./actions";
-import {getCoursePlanThunk, getCourseNotificationsThunk} from "../student/courses-module/thunks";
+import {getCoursePlanThunk, getCourseNotificationsThunk, getCourseStudentsInfoThunk} from "../student/courses-module/thunks";
 
 export const updateTeacherInfoThunk = (id: number, payload: any): any =>
     (dispatch) => {
@@ -136,6 +136,17 @@ export const getTeacherMessagesThunk = (id: number): any =>
         }))
     };
 
+export const getInitializeTeacherMessagesThunk = (id: number): any =>
+    (dispatch) => {
+        dispatch(setStartTeacherPageLoading());
+        const promise = dispatch(getTeacherMessagesThunk(id));
+        const promise2 = dispatch(getTeacherInfoThunk(id));
+        Promise.all([promise, promise2])
+            .then(() => {
+                dispatch(setStopTeacherPageLoading());
+            });
+    };
+
 export const readTeacherNotificationsThunk = (id: number, teacherId: number): any =>
     (dispatch) => {
         teacherAPI.readTeacherNotification(id).then((response => {
@@ -168,6 +179,24 @@ export const sentNotificationThunk = (id: number, payload: any): any =>
         teacherAPI.sentNotification(payload).then((response => {
             if (response === "OK") {
                 dispatch(getCourseNotificationsThunk(id));
+            }
+        }))
+    };
+
+export const sentMarkThunk = (courseId: number, mark: number, studentId: number, weekNum: number): any =>
+    (dispatch) => {
+        teacherAPI.sentMark(courseId, mark, studentId, weekNum).then((response => {
+            if (response === "OK") {
+                dispatch(getCourseStudentsInfoThunk(courseId));
+            }
+        }))
+    };
+
+export const sentCommentThunk = (courseId: number, comment: string, studentId: number, weekNum: number): any =>
+    (dispatch) => {
+        teacherAPI.sentComment(courseId, comment, studentId, weekNum).then((response => {
+            if (response === "OK") {
+                dispatch(getCourseStudentsInfoThunk(courseId));
             }
         }))
     };

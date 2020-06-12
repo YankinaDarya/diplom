@@ -39,3 +39,8 @@ export const getTeacherPageLoading = createSelector(getTeacherInfo,
     (teacherInfo) => {
         return teacherInfo.isTeacherPageLoading;
     });
+
+export const getTeacherFullName = createSelector(getTeacherInfo,
+    (teacherInfo) => {
+        return `${teacherInfo.lastname} ${teacherInfo.firstname} ${teacherInfo.midname}`;
+    });

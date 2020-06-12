@@ -29,3 +29,13 @@ export const getAllCourses = createSelector(getCoursesInfo,
     (courses) => {
         return courses.allCourses;
     });
+
+export const getHomeworks = createSelector(getCoursesInfo,
+    (courses) => {
+        return courses.hw;
+    });
+
+export const getAvgMark = createSelector(getCoursesInfo,
+    (courses) => {
+        return courses.avgMark;
+    });

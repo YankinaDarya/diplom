@@ -2,27 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb674525-3f5a-436c-9b3e-992040af22b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/student/all-courses/all-courses-item/_components/schedule/index.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/student/all-courses/all-courses-item/_components/schedule/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/student/all-courses/all-courses-item/index.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/student/all-courses/all-courses-item/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/student/notifications-module/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/student/notifications-module/reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/student/notifications-module/selectors.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/student/notifications-module/thunks.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Teacher/messages/message-chain/index.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Teacher/messages/message-chain/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Navbar/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/notification-page/NotificationPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/notification-page/NotificationPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/student/all-courses/index.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/all-courses/index.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/CoursePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/CoursePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/StudentsTable/StudentsTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/StudentsTable/StudentsTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/StudentsTable/StudentsTable/StudentsRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/StudentsTable/StudentsTable/StudentsRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/messages/messages.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/messages/messages.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/messages/messages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/messages/messages.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/student/all-courses/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/all-courses/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/student/student-course-page/student-course-page.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-course-page/student-course-page.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/student/student-course-page/student-course-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-course-page/student-course-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/student/student-course-page/students-accordion/students-accordion.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-course-page/students-accordion/students-accordion.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/student/student-course-page/students-accordion/students-accordion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-course-page/students-accordion/students-accordion.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/student/student-courses/student-courses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-courses/student-courses.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/student/student-courses/сourse/student-сourse.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-courses/сourse/student-сourse.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/student/student-notifications/student-notifications.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-notifications/student-notifications.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/course/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/course/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/student/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/student/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/student/cabinet-module/thunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/student/cabinet-module/thunks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/teacher/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/teacher/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/Teacher/selectors/teacher-cabinet-selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Teacher/selectors/teacher-cabinet-selector.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/Teacher/thunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Teacher/thunks.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/student/courses-module/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/student/courses-module/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/student/courses-module/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/student/courses-module/reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/student/courses-module/selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/student/courses-module/selectors.ts" afterDir="false" />
@@ -131,7 +129,8 @@
       <workItem from="1591260028538" duration="643000" />
       <workItem from="1591555511153" duration="56000" />
       <workItem from="1591888139177" duration="13793000" />
-      <workItem from="1591956630070" duration="8738000" />
+      <workItem from="1591956630070" duration="8931000" />
+      <workItem from="1591976500714" duration="19005000" />
     </task>
     <servers />
   </component>
@@ -159,10 +158,10 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state width="1794" height="435" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1586884672662" />
-    <state x="575" y="342" key="com.intellij.ide.util.TipDialog" timestamp="1591956629902">
+    <state x="575" y="342" key="com.intellij.ide.util.TipDialog" timestamp="1591976501809">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="575" y="342" key="com.intellij.ide.util.TipDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1591956629902" />
+    <state x="575" y="342" key="com.intellij.ide.util.TipDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1591976501809" />
     <state x="575" y="248" key="run.anything.popup" timestamp="1591122935505">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>

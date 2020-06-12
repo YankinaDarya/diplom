@@ -19,11 +19,11 @@ import {
     getStudentNotifNumber
 } from './redux/student/cabinet-module/selectors';
 import StudentCabinet from "./Components/student/student-cabinet/student-cabinet";
-import {StudentCoursePage} from './Components/student/student-course-page/student-course-page';
+import StudentCoursePage from './Components/student/student-course-page/student-course-page';
 import {MainPage} from './Components/main-page/main-page';
 import NewCourse from './Components/Teacher/new-course/new-course';
 import NotificationPage from "./Components/Teacher/notification-page/NotificationPage";
-import {Messages} from './Components/Teacher/messages/messages';
+import Messages from './Components/Teacher/messages/messages';
 import StudentTimetable from "./Components/student/student-timetable/student-timetable";
 import StudentNotifications from './Components/student/student-notifications/student-notifications';
 import AdminCabinet from './Components/admin/admin-cabinet';
@@ -84,7 +84,7 @@ const AppView = ({
                     <Route exact path="/" render={() => <StudentCabinet/>}/>
                     <Route exact path="/all/courses" render={() => <AllCourses/>}/>
                     <Route exact path="/student/courses" render={() => <StudentCourses/>}/>
-                    <Route exact path="/student/course/:id?"
+                    <Route exact path="/student/course/:id"
                            render={() => <StudentCoursePage/>}/>
                     <Route exact path="/student/timetable" render={() => <StudentTimetable/>}/>
                     <Route exact path="/student/notifications" render={() => <StudentNotifications/>}/>

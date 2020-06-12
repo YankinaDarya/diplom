@@ -21,6 +21,7 @@ import {Schedule} from "../TeacherCourses/Course/_components/schedule";
 import {sentNotificationThunk, updateWeekThunk} from "../../../redux/Teacher/thunks";
 import {Preloader} from "../../Common/Preloader";
 import {getTeacherPageLoading} from "../../../redux/Teacher/selectors/teacher-cabinet-selector";
+import {getAvgMark, getHomeworks} from '../../../redux/student/courses-module/selectors';
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Сourse-page';
@@ -61,7 +62,7 @@ class CoursePageView extends Component<PropsType> {
 
     render() {
         const {courseMainInfo, plan, students, notifications, updateWeek, isTeacherPageLoading} = this.props;
-        const {name, imgurl, info, schedule, teacher} = courseMainInfo;
+        const {name, imgurl, info, schedule, teacher, id} = courseMainInfo;
         if(isTeacherPageLoading) {
             return <Preloader />
         }
@@ -90,7 +91,7 @@ class CoursePageView extends Component<PropsType> {
                             <Accordion plan={plan} updateWeek={updateWeek}/>
                         </div>
                         <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}><h4>Список студентов:</h4>
-                            <StudentsTable students={students}/>
+                            <StudentsTable students={students} courseId={id} />
                         </div>
                     </div>
                 </div>

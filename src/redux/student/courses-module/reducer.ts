@@ -4,15 +4,15 @@ import {
     STOP_CREATING_NEW_COURSE_ACTION,
     SET_SUCCESS_CREAT_COURSE_ACTION,
     SET_ERROR_CREAT_COURSE_ACTION,
-    SET_STUDENT_COURSES, SET_ALL_COURSES
+    SET_STUDENT_COURSES, SET_ALL_COURSES, SET_STUDENT_HOMEWORKS
 } from "./actions";
 
-export type Plan = {
-    weekNumber: number;
-    content: string;
-    abstract: any;
-    homework: any;
-}
+export type HomeworkType = {
+    comment: string;
+    hw_url: string;
+    mark: number;
+    week_num: number;
+};
 
 export type StudentCourseType = {
     id: number;
@@ -35,7 +35,8 @@ type StateType = {
 const initialState = {
     studentCourses: [],
     allCourses: [],
-
+    avgMark: 0,
+    hw: [],
     errorCreateCourseMessage: '',
     isSuccessCreateNewCourse: false,
     isCreating: false,
@@ -78,6 +79,11 @@ export const coursesReducer = (state = initialState,
         case SET_ALL_COURSES:
             return {
                 ...state, allCourses: payload,
+            };
+        case SET_STUDENT_HOMEWORKS:
+            return {
+              ...state, hw: payload.hw,
+                avgMark: payload.avg_mark,
             };
         default:
             return state;

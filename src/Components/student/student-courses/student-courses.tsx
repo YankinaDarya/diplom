@@ -7,7 +7,7 @@ import classNames from "classnames/bind";
 import {NavLink} from "react-router-dom";
 import { getStudentCourses } from '../../../redux/student/courses-module/selectors';
 import { getALLStudentCoursesThunk } from '../../../redux/student/courses-module/thunks';
-import {getStudentPageLoading} from "../../../redux/student/cabinet-module/selectors";
+import {getStudentId, getStudentPageLoading} from "../../../redux/student/cabinet-module/selectors";
 import {Preloader} from "../../Common/Preloader";
 import { CourseType } from '../../../redux/Teacher/TeacherCoursesReducer';
 
@@ -18,10 +18,11 @@ type PropsType = {
     studentCourses: Array<CourseType>;
     isLoading: boolean;
     getALLStudentCourses: any;
+    id: number;
 };
 
-const StudentCoursesView = ({studentCourses, isLoading, getALLStudentCourses}: PropsType) => {
-    useEffect(() => getALLStudentCourses, []);
+const StudentCoursesView = ({studentCourses, isLoading, getALLStudentCourses, id}: PropsType) => {
+    useEffect(() => getALLStudentCourses(id), []);
     if(isLoading) {
         return <Preloader />
     }
@@ -45,6 +46,7 @@ const StudentCoursesView = ({studentCourses, isLoading, getALLStudentCourses}: P
 const mapStateToProps = (state: AppStateType) => ({
     studentCourses: getStudentCourses(state),
     isLoading: getStudentPageLoading(state),
+    id: getStudentId(state),
 });
 
 export const StudentCourses = connect(mapStateToProps, {getALLStudentCourses: getALLStudentCoursesThunk})(StudentCoursesView);
