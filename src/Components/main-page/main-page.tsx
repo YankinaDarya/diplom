@@ -6,6 +6,7 @@ import {LoginTabs} from "./tabs/tabs";
 import {getTeacherIsAuth} from "../../redux/Teacher/selectors/teacher-cabinet-selector";
 import {getStudentIsAuth} from "../../redux/student/cabinet-module/selectors";
 import {connect} from "react-redux";
+import { Redirect } from 'react-router-dom';
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Main-page';

@@ -2,25 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb674525-3f5a-436c-9b3e-992040af22b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/student/student-messages/message-chain/index.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/student/student-messages/message-chain/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/student/student-messages/messages.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/student/student-messages/messages.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/CoursePage.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/CoursePage.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/CoursePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/CoursePage/CoursePage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/TeacherCabinet/Field/Field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/TeacherCabinet/Field/Field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/messages/message-chain/index.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/messages/message-chain/index.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/messages/message-chain/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/messages/message-chain/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/messages/messages.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/messages/messages.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/messages/messages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/messages/messages.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/student/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/student/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Teacher/TeacherCabinet/TeacherCabinet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Teacher/TeacherCabinet/TeacherCabinet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/admin/admin-cabinet/index.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/admin/admin-cabinet/index.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/admin/admin-cabinet/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/admin/admin-cabinet/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/main-page/main-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/main-page/main-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/student/all-courses/index.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/all-courses/index.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/student/student-cabinet/student-cabinet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-cabinet/student-cabinet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/student/student-course-page/students-accordion/students-accordion.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/student/student-course-page/students-accordion/students-accordion.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/teacher/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/teacher/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/Teacher/thunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Teacher/thunks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/admin/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/admin/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/admin/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/admin/reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/admin/selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/admin/selectors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/admin/thunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/admin/thunks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/auth/thunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/auth/thunks.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/student/cabinet-module/selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/student/cabinet-module/selectors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/student/courses-module/thunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/student/courses-module/thunks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/student/notifications-module/thunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/student/notifications-module/thunks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/student/timetable-module/thunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/student/timetable-module/thunks.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +127,9 @@
       <workItem from="1591888139177" duration="13793000" />
       <workItem from="1591956630070" duration="8931000" />
       <workItem from="1591976500714" duration="19349000" />
-      <workItem from="1592034656959" duration="10613000" />
+      <workItem from="1592034656959" duration="10787000" />
+      <workItem from="1592067646379" duration="517000" />
+      <workItem from="1592069635506" duration="4281000" />
     </task>
     <servers />
   </component>
@@ -155,10 +157,10 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state width="1794" height="435" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1586884672662" />
-    <state x="575" y="342" key="com.intellij.ide.util.TipDialog" timestamp="1592034657371">
+    <state x="575" y="342" key="com.intellij.ide.util.TipDialog" timestamp="1592069635321">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="575" y="342" key="com.intellij.ide.util.TipDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1592034657371" />
+    <state x="575" y="342" key="com.intellij.ide.util.TipDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1592069635321" />
     <state x="575" y="248" key="run.anything.popup" timestamp="1591122935505">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>

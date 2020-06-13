@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 import {
     getErrorAddMessage,
     getTimetablesData,
-    isAdding,
+    isAdding, isAdminPageLoading,
     isSuccessAdd
 } from '../../../redux/admin/selectors';
 import {formFields} from './constants';
@@ -21,6 +21,7 @@ import {
 import {Action, TimetableWeek} from "../../../types/types";
 import {NewUserType} from '../../../redux/admin/types';
 import {AdminTimetable} from './_components/admin-timetable';
+import {Preloader} from "../../Common/Preloader";
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Admin';
@@ -34,9 +35,10 @@ type PropsType = {
     rejectTimetable: Action<{ id: number, comment: string }>,
     approveTimetable: Action<number>,
     timetables: Array<{ lecId: number, name: string, timetable: Array<TimetableWeek> }>
+    isLoading: boolean;
 };
 
-const AdminCabinet = ({isAddLoading, error, isAddSuccess, addNewUser, getTimetables, timetables, rejectTimetable, approveTimetable}) => {
+const AdminCabinet = ({isLoading, isAddLoading, error, isAddSuccess, addNewUser, getTimetables, timetables, rejectTimetable, approveTimetable}) => {
     useEffect(() => {
         getTimetables()
     }, []);
@@ -49,6 +51,11 @@ const AdminCabinet = ({isAddLoading, error, isAddSuccess, addNewUser, getTimetab
             enqueueSnackbar(`${error}`, {variant: "error"});
         }
     }, [isAddSuccess, error]);
+
+    if(isLoading) {
+        return <Preloader />
+    }
+
     return (
         <div className={cn(COMPONENT_STYLE_NAME)}>
             <Form
@@ -99,6 +106,7 @@ const mapStateToProps = state => ({
     error: getErrorAddMessage(state),
     isAddSuccess: isSuccessAdd(state),
     timetables: getTimetablesData(state),
+    isLoading: isAdminPageLoading(state),
 });
 
 export default connect(mapStateToProps, {

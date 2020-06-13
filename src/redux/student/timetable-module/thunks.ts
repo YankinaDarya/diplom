@@ -6,7 +6,7 @@ export const getStudentTimetableThunk = (id: number): any =>
         dispatch(setStudentTimetableStartLoadingAction());
         studentAPI.getStudentTimetable(id).then((response => {
                 if (response) {
-                    response.schedule.forEach((lesson) => {
+                    response.data.forEach((lesson) => {
                         const lessonData = {
                             lessonNumber: lesson.time,
                             day: lesson.day_cd,

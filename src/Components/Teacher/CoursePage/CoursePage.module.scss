@@ -4,6 +4,7 @@
     padding-left: 50px;
     &__h1 {
         font-size: 36px;
+        margin-left: -20px;
     }
     &__title {
         color: #1976d2;
@@ -27,6 +28,9 @@
     }
     &__info {
         font-size: 24px;
+    }
+    &__info-field {
+        margin-left: -20px;
     }
     &__item {
         margin: 15px;

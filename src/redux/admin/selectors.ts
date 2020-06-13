@@ -34,3 +34,8 @@ export const getTimetablesData = createSelector(getAdminInfo,
     (adminInfo) => {
         return adminInfo.timeTables;
     });
+
+export const isAdminPageLoading = createSelector(getAdminInfo,
+    (adminInfo) => {
+        return adminInfo.isAdminPageLoading;
+    });

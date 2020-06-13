@@ -3,6 +3,7 @@ import { loginType } from "./types";
 import { setAdminIsAuthAction, setAdminIdAction } from "../admin/actions";
 import { setStudentIdAction, setStudentIsAuth, setStudentUnreadNotificationsAction, setStudentUnreadMessagesAction } from "../student/cabinet-module/actions";
 import { setTeacherIsAuth, setTeacherIdAction, setTeacherUnreadNotificationsAction, setTeacherUnreadMessagesAction } from "../Teacher/actions";
+import {setIsAppStartLoading, setIsAppStopLoading} from "../app/actions";
 
 export const getTeacherNotificationsNumberThunk = (id: number): any => (dispatch) => {
     authAPI.getUnreadNotificationsNumber(id)
@@ -43,6 +44,7 @@ export const getStudentMessagesNumberThunk = (id: number): any => (dispatch) => 
 
 export const getAuthInfoThunk = (): any =>
     (dispatch) => {
+        dispatch(setIsAppStartLoading());
         authAPI.getUserInfo().then((response => {
             if (Boolean(response.data.length)) {
                 const role = response.data[0].role;
@@ -63,7 +65,8 @@ export const getAuthInfoThunk = (): any =>
                     dispatch(setTeacherIsAuth(true));
                 }
             }
-        }))
+        }));
+        dispatch(setIsAppStopLoading());
     };
 
 export const loginThunk = ({login, password}: loginType): any =>

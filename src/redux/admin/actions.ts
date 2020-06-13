@@ -27,3 +27,6 @@ export const setStopAddingAction: BaseAction = () => ({type: SET_STOP_ADDING_ACT
 
 export const SET_TIMETABLES_ACTION = 'SET_TIMETABLES_ACTION';
 export const setTimetablesAction: Action<any> = payload => ({type: SET_TIMETABLES_ACTION, payload});
+
+export const SET_EMPTY_TIMETABLES_ACTION = 'SET_EMPTY_TIMETABLES_ACTION';
+export const setEmptyTimetablesAction: BaseAction = () => ({type: SET_EMPTY_TIMETABLES_ACTION});

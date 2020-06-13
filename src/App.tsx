@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import {Header} from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
 import style from './App.module.css';
@@ -66,6 +66,7 @@ const AppView = ({
                         notifications={teacherNotifications}/>
                 <div className={style.appWrapperContent}>
                     <Route exact path="/" render={() => <TeacherCabinet/>}/>
+                    <Route exact path="/cabinet" render={() => <TeacherCabinet/>}/>
                     <Route exact path="/courses" render={() => <TeacherCourses/>}/>
                     <Route exact path="/course/:id"
                            render={() => <CoursePage/>}/>
@@ -83,6 +84,7 @@ const AppView = ({
                 />
                 <div className={style.appWrapperContent}>
                     <Route exact path="/" render={() => <StudentCabinet/>}/>
+                    <Route exact path="/student/cabinet" render={() => <StudentCabinet/>}/>
                     <Route exact path="/all/courses" render={() => <AllCourses/>}/>
                     <Route exact path="/student/courses" render={() => <StudentCourses/>}/>
                     <Route exact path="/student/course/:id"

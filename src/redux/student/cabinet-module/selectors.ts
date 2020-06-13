@@ -76,7 +76,7 @@ export const getStudentMessagesNumber = createSelector(getStudentInfo,
     });
 export const getStudentNotifNumber = createSelector(getStudentInfo,
     (studentInfo) => {
-        return studentInfo.studentUnreadMessagesNumber
+        return studentInfo.studentUnreadNotifNumber
     });
 export const getStudentPageLoading = createSelector(getStudentInfo,
     (studentInfo) => {

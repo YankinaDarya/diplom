@@ -96,7 +96,6 @@ class CoursePageView extends Component<PropsType> {
         return (
             <div className={cn(COMPONENT_STYLE_NAME)}>
                 <h1 className={cn(`${COMPONENT_STYLE_NAME}__h1`)}>
-                   {/* {name}*/}
                     <MyField onClickSave={this.saveCourseTitle}
                            onChange={this.onCourseTitleChange}
                            defaultValue={name}
@@ -106,11 +105,12 @@ class CoursePageView extends Component<PropsType> {
                     {/*<img src={imgurl} alt="web" className={cn(`${COMPONENT_STYLE_NAME}__img`)}/>*/}
                     <div className={cn(`${COMPONENT_STYLE_NAME}__info`)}>
                         <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}><h4>Информация о курсе:</h4>
-                            {/*{info}*/}
-                            <MyField onClickSave={this.saveCourseInformation}
-                                     onChange={this.onCourseInformationChange}
-                                     defaultValue={info}
-                            />
+                            <div className={cn(`${COMPONENT_STYLE_NAME}__info-field`)}>
+                                <MyField onClickSave={this.saveCourseInformation}
+                                         onChange={this.onCourseInformationChange}
+                                         defaultValue={info}
+                                />
+                            </div>
                         </div>
                         {Boolean(schedule.length) && (
                             <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}><h4>Время и место

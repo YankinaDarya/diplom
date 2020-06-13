@@ -3,7 +3,7 @@ import {
     setErrorAddAction,
     setStartAddingAction, setStartAdminPageLoadingAction,
     setStopAddingAction, setStopAdminPageLoadingAction,
-    setSuccessAddAction, setTimetablesAction
+    setSuccessAddAction, setTimetablesAction, setEmptyTimetablesAction
 } from "./actions";
 import {adminAPI} from "../../api/admin";
 import { emptyTimetable } from "./consts";
@@ -29,7 +29,7 @@ export const getTimetablesThunk = (): any =>
         dispatch(setStartAdminPageLoadingAction());
         adminAPI.getTimetables()
             .then((response => {
-                if (response) {
+                if (response.length) {
                     for(let i = 0; i < response.length; i++) {
                         const tmpArr = [...emptyTimetable];
                         response[i].schedule.forEach((lesson) => {
@@ -44,7 +44,9 @@ export const getTimetablesThunk = (): any =>
                         // @ts-ignore
                         dispatch(setTimetablesAction({timetable: tmpArr, lecId: response[i].lec_id, name: response[i].name}));
                     }
-
+                }
+                else {
+                    dispatch(setEmptyTimetablesAction());
                 }
                 dispatch(setStopAdminPageLoadingAction());
             }))

@@ -281,12 +281,12 @@ class TeacherCabinet extends Component<PropsType, StateType> {
                         </li>
                     </ul>
                 </div>
-                <div className={cn(`${COMPONENT_STYLE_NAME}__title`)}>Курсы</div>
+                {/*<div className={cn(`${COMPONENT_STYLE_NAME}__title`)}>Курсы</div>
                 <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
                     <ul className={cn(`${COMPONENT_STYLE_NAME}__list`)}>
                         {coursesItem}
                     </ul>
-                </div>
+                </div>*/}
                 <div className={cn(`${COMPONENT_STYLE_NAME}__title`)}>Трудовая деятельность</div>
                 <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
                     <div className={cn(`${COMPONENT_STYLE_NAME}__info`)}>

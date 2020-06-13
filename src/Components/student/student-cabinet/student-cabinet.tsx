@@ -267,12 +267,12 @@ class StudentCabinet extends Component<PropsType, StateType> {
                         </li>
                     </ul>
                 </div>
-                <h2 className={cn(`${COMPONENT_STYLE_NAME}__title`)}>Курсы</h2>
+                {/*<h2 className={cn(`${COMPONENT_STYLE_NAME}__title`)}>Курсы</h2>
                 <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
                     <ul className={cn(`${COMPONENT_STYLE_NAME}__list`)}>
                         {coursesItem}
                     </ul>
-                </div>
+                </div>*/}
                 <div>
                     <br/>
                 </div>

@@ -63,7 +63,7 @@ export const teacherAPI = {
         }).then(res => res.data);
     },
     updateCourse(id: number, payload: any) {
-        return instance.post(`course/${id}`, {
+        return instance.put(`course/${id}`, {
             ...payload
         }).then(res => res.data);
     },

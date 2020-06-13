@@ -7,7 +7,7 @@ import {
     SET_ADMIN_ID,
     SET_START_ADMIN_PAGE_LOADING,
     SET_STOP_ADMIN_PAGE_LOADING,
-    SET_TIMETABLES_ACTION,
+    SET_TIMETABLES_ACTION, SET_EMPTY_TIMETABLES_ACTION,
 } from "./actions";
 
 const initialState = {
@@ -66,6 +66,10 @@ export const adminAuthReducer = (state = initialState, {type, payload}: ActionsT
             return {
                 // @ts-ignore
                 ...state, timeTables: [...state.timeTables, payload],
+            };
+        case SET_EMPTY_TIMETABLES_ACTION:
+            return {
+                ...state, timeTables: []
             };
         default:
             return state;
