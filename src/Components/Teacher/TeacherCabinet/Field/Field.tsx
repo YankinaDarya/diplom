@@ -13,7 +13,7 @@ type PropsType = {
     onClickSave: (e: any) => void;
     onChange: (e: any) => void;
     defaultValue: string | null | undefined;
-    title: string;
+    title?: string;
 };
 
 const Field = ({ onChange, defaultValue, onClickSave, title}: PropsType): JSX.Element => {

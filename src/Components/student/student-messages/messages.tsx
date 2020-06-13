@@ -2,26 +2,20 @@ import React, {useEffect} from 'react';
 import classNames from "classnames/bind";
 import styles from "./messages.module.scss";
 import {Preloader} from "../../Common/Preloader";
-import {
-    getTeacherId, getTeacherMessages,
-    getTeacherPageLoading,
-    getTeacherFullName
-} from "../../../redux/Teacher/selectors/teacher-cabinet-selector";
 import {connect} from "react-redux";
-import {
-    getInitializeTeacherMessagesThunk,
-    readTeacherMessageThunk, teacherAnswerThunk
-} from "../../../redux/Teacher/thunks";
 import { MessageChain } from './message-chain';
+import { getStudentPageLoading, getStudentId, getStudentFullName } from '../../../redux/student/cabinet-module/selectors';
+import { getStudentMessages } from '../../../redux/student/notifications-module/selectors';
+import { getInitializeStudentMessagesThunk, readStudentMessageThunk, studentAnswerThunk } from '../../../redux/student/notifications-module/thunks';
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Messages';
 
-const MessagesPageView = ({fullName, messages, getTeacherMessages, id, readMessage, isTeacherPageLoading, teacherAnswer}) => {
+const MessagesPageView = ({fullName, messages, getStudentMessages, id, readMessage, isStudentPageLoading, studentAnswer}) => {
     useEffect(() => {
-        getTeacherMessages(id)
+        getStudentMessages(id)
     }, []);
-    if(isTeacherPageLoading) {
+    if(isStudentPageLoading) {
         return <Preloader />
     }
     const messagesArrays = Object.values(messages);
@@ -32,10 +26,10 @@ const MessagesPageView = ({fullName, messages, getTeacherMessages, id, readMessa
             </h1>
             <div className={cn(`${COMPONENT_STYLE_NAME}__chain-block`)}>
                 {messagesArrays.map((message) => <MessageChain readMessage={readMessage}
-                                                               teacherId={id}
+                                                               studentId={id}
                                                                messages={message}
                                                                fullName={fullName}
-                                                               teacherAnswer={teacherAnswer}
+                                                               studentAnswer={studentAnswer}
                 />)}
             </div>
         </div>
@@ -43,14 +37,14 @@ const MessagesPageView = ({fullName, messages, getTeacherMessages, id, readMessa
 };
 
 const mapStateToProps = (state) => ({
-    messages: getTeacherMessages(state),
-    id: getTeacherId(state),
-    isTeacherPageLoading: getTeacherPageLoading(state),
-    fullName: getTeacherFullName(state),
+    messages: getStudentMessages(state),
+    id: getStudentId(state),
+    isStudentPageLoading: getStudentPageLoading(state),
+    fullName: getStudentFullName(state),
 });
 
-export default connect(mapStateToProps, {
-    getTeacherMessages: getInitializeTeacherMessagesThunk,
-    readMessage: readTeacherMessageThunk,
-    teacherAnswer: teacherAnswerThunk,
+export const StudentMessages = connect(mapStateToProps, {
+    getStudentMessages: getInitializeStudentMessagesThunk,
+    readMessage: readStudentMessageThunk,
+    studentAnswer: studentAnswerThunk,
 })(MessagesPageView);

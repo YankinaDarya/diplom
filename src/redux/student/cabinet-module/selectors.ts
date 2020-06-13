@@ -82,3 +82,7 @@ export const getStudentPageLoading = createSelector(getStudentInfo,
     (studentInfo) => {
         return studentInfo.isStudentPageLoading
     });
+export const getStudentFullName = createSelector(getStudentInfo,
+    (studentInfo) => {
+        return `${studentInfo.lastname} ${studentInfo.firstname} ${studentInfo.midname}`;
+    });

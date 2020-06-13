@@ -10,7 +10,7 @@ import {getFormattedDate, getFormattedTime} from '../../../../utils';
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Messages-chain';
 
-export const MessageChain = ({messages, teacherId, readMessage, fullName, teacherAnswer}) => {
+export const MessageChain = ({messages, studentId, readMessage, fullName, studentAnswer}) => {
     const [isField, setIsField] = useState(false);
     const [curChain, setCurChain] = useState(0);
     return (
@@ -39,7 +39,7 @@ export const MessageChain = ({messages, teacherId, readMessage, fullName, teache
                                         <Switch
                                             checked={mes.is_read}
                                             onChange={() => {
-                                                readMessage(mes.id, teacherId)
+                                                readMessage(mes.id, studentId)
                                             }}
                                             name="checkedA"
                                             inputProps={{'aria-label': 'secondary checkbox'}}
@@ -63,7 +63,7 @@ export const MessageChain = ({messages, teacherId, readMessage, fullName, teache
             {isField && <div className={cn(`${COMPONENT_STYLE_NAME}__form-container`)}>
                 <Form
                     onSubmit={(values) => {
-                        teacherAnswer(teacherId, values.message, curChain)
+                        studentAnswer(studentId, values.message, curChain)
                     }}
                     render={({handleSubmit, submitting}) => (
                         <form onSubmit={handleSubmit} noValidate>

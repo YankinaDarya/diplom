@@ -33,6 +33,7 @@ import {AllCourses} from './Components/student/all-courses';
 import {StudentCourses} from './Components/student/student-courses/student-courses';
 import {Preloader} from "./Components/Common/Preloader";
 import {getAppIsLoading} from "./redux/app/selectors";
+import { StudentMessages } from './Components/student/student-messages/messages';
 
 type PropsType = {
     teacherIsAuth?: boolean;
@@ -88,7 +89,7 @@ const AppView = ({
                            render={() => <StudentCoursePage/>}/>
                     <Route exact path="/student/timetable" render={() => <StudentTimetable/>}/>
                     <Route exact path="/student/notifications" render={() => <StudentNotifications/>}/>
-                    <Route exact path="/student/messages" render={() => <div/>}/>
+                    <Route exact path="/student/messages" render={() => <StudentMessages />}/>
                 </div>
             </div>)}
             {adminIsAuth && (<div>

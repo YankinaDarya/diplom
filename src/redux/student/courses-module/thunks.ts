@@ -11,9 +11,7 @@ import {
     setCourseNotificationsAction,
     setCoursePlanAction,
     setCourseStudentsInfoAction,
-    setStartLoadingCoursePageAction,
     setStartTeacherPageLoading,
-    setStopLoadingCoursePageAction,
     setStopTeacherPageLoading
 } from "../../Teacher/actions";
 import {setStartStudentPageLoading, setStopStudentPageLoading} from "../cabinet-module/actions";

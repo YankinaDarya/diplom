@@ -13,13 +13,28 @@ import {
     setAllTeacherMessagesAction,
     setStartTeacherPageLoading, setStopTeacherPageLoading
 } from "./actions";
-import {getCoursePlanThunk, getCourseNotificationsThunk, getCourseStudentsInfoThunk} from "../student/courses-module/thunks";
+import {
+    getCoursePlanThunk,
+    getCourseNotificationsThunk,
+    getCourseStudentsInfoThunk,
+    getCourseInfoThunk
+} from "../student/courses-module/thunks";
+import {getTeacherMessagesNumberThunk, getTeacherNotificationsNumberThunk} from "../auth/thunks";
 
 export const updateTeacherInfoThunk = (id: number, payload: any): any =>
     (dispatch) => {
         teacherAPI.updateInfo(id, payload).then((response => {
             if (response === "OK") {
                 dispatch(setNewTeacherDataAction(payload));
+            }
+        }))
+    };
+
+export const updateCourseThunk = (id: number, payload: any): any =>
+    (dispatch) => {
+        teacherAPI.updateCourse(id, payload).then((response => {
+            if (response === "OK") {
+                dispatch(getCourseInfoThunk(id));
             }
         }))
     };
@@ -151,6 +166,7 @@ export const readTeacherNotificationsThunk = (id: number, teacherId: number): an
     (dispatch) => {
         teacherAPI.readTeacherNotification(id).then((response => {
             if (response) {
+                dispatch(getTeacherNotificationsNumberThunk(teacherId));
                 dispatch(getTeacherNotificationsThunk(teacherId));
             }
         }))
@@ -160,7 +176,8 @@ export const readTeacherMessageThunk = (id: number, teacherId: number): any =>
     (dispatch) => {
         teacherAPI.readTeacherMessage(id).then((response => {
             if (response) {
-                dispatch(getTeacherMessagesThunk(id));
+                dispatch(getTeacherMessagesNumberThunk(teacherId));
+                dispatch(getTeacherMessagesThunk(teacherId));
             }
         }))
     };
@@ -197,6 +214,15 @@ export const sentCommentThunk = (courseId: number, comment: string, studentId: n
         teacherAPI.sentComment(courseId, comment, studentId, weekNum).then((response => {
             if (response === "OK") {
                 dispatch(getCourseStudentsInfoThunk(courseId));
+            }
+        }))
+    };
+
+export const teacherAnswerThunk = (userId: number, message: string, chain_num: number): any =>
+    (dispatch) => {
+        teacherAPI.answer(userId, message, chain_num).then((response => {
+            if (response === "OK") {
+                dispatch(getInitializeTeacherMessagesThunk(userId));
             }
         }))
     };

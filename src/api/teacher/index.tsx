@@ -28,19 +28,19 @@ export const teacherAPI = {
         return instance.get(`message/${id}`).then(res => res.data);
     },
     readTeacherNotification(id: number) {
-        return instance.post(`/notification/read/${id}`, {}).then(res => res.data);
+        return instance.post(`notification/read/${id}`, {}).then(res => res.data);
     },
     readTeacherMessage(id: number) {
-        return instance.post(`/message/read/${id}`, {}).then(res => res.data);
+        return instance.post(`message/read/${id}`, {}).then(res => res.data);
     },
     updateWeek(id: number, payload: any) {
-        return instance.put(`/course/week/${id}`, {...payload}).then(res => res.data);
+        return instance.put(`course/week/${id}`, {...payload}).then(res => res.data);
     },
     sentNotification(payload: any) {
-        return instance.post(`/course/notification`, {...payload}).then(res => res.data);
+        return instance.post(`course/notification`, {...payload}).then(res => res.data);
     },
     sentMark(courseId: number, mark: number, studentId: number, weekNum: number) {
-        return instance.put(`/course/hw`, {
+        return instance.put(`course/hw`, {
             mark,
             course_id: courseId,
             student_id: studentId,
@@ -48,11 +48,23 @@ export const teacherAPI = {
         }).then(res => res.data);
     },
     sentComment(courseId: number, comment: string, studentId: number, weekNum: number) {
-        return instance.post(`/course/hw/comm`, {
+        return instance.post(`course/hw/comm`, {
             comment,
             course_id: courseId,
             student_id: studentId,
             week_num: weekNum,
+        }).then(res => res.data);
+    },
+    answer(userId: number, message: string, chain_num: number) {
+        return instance.post(`message`, {
+            user_id: userId,
+            message,
+            chain_num,
+        }).then(res => res.data);
+    },
+    updateCourse(id: number, payload: any) {
+        return instance.post(`course/${id}`, {
+            ...payload
         }).then(res => res.data);
     },
 };

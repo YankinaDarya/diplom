@@ -31,4 +31,11 @@ export const studentAPI = {
     readStudentMessage(id: number) {
         return instance.post(`/message/read/${id}`, {}).then(res => res.data);
     },
+    answer(userId: number, message: string, chain_num: number) {
+        return instance.post(`message`, {
+            user_id: userId,
+            message,
+            chain_num,
+        }).then(res => res.data);
+    },
 };

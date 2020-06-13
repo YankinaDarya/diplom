@@ -18,10 +18,10 @@ import {
     getTeacherStudentsInfo, isTeacherCoursePageLoading
 } from "../../../redux/Teacher/selectors/teacher-course-selectors";
 import {Schedule} from "../TeacherCourses/Course/_components/schedule";
-import {sentNotificationThunk, updateWeekThunk} from "../../../redux/Teacher/thunks";
+import {sentNotificationThunk, updateCourseThunk, updateWeekThunk} from "../../../redux/Teacher/thunks";
 import {Preloader} from "../../Common/Preloader";
 import {getTeacherPageLoading} from "../../../redux/Teacher/selectors/teacher-cabinet-selector";
-import {getAvgMark, getHomeworks} from '../../../redux/student/courses-module/selectors';
+import MyField from '../TeacherCabinet/Field/Field';
 
 const cn = classNames.bind(styles);
 const COMPONENT_STYLE_NAME = 'Сourse-page';
@@ -39,6 +39,7 @@ type MapPropsType = {
 type MapDispatchType = {
     getCourseInfo: (id: number) => void;
     sentNotification: any;
+    updateCourse: (id: number, payload: any) => void;
 };
 
 type PathParamsType = {
@@ -50,6 +51,32 @@ class CoursePageView extends Component<PropsType> {
     constructor(props: PropsType) {
         super(props);
     }
+
+    state = {
+        courseTitle: this.props.courseMainInfo.name,
+        courseInformation: this.props.courseMainInfo.info,
+    };
+
+    onCourseTitleChange = (e: any) => {
+        this.setState({
+            courseTitle: e.currentTarget.value
+        });
+    };
+    saveCourseTitle = () => {
+        const {updateCourse, courseMainInfo} = this.props;
+        const {id} = courseMainInfo;
+        updateCourse(id, {name: this.state.courseTitle});
+    };
+    onCourseInformationChange = (e: any) => {
+        this.setState({
+            courseInformation: e.currentTarget.value
+        });
+    };
+    saveCourseInformation = () => {
+        const {updateCourse, courseMainInfo} = this.props;
+        const {id} = courseMainInfo;
+        updateCourse(id, {info: this.state.courseInformation});
+    };
 
     sentNotif = (values) => {
         const courseId = this.props.match.params.id;
@@ -69,13 +96,21 @@ class CoursePageView extends Component<PropsType> {
         return (
             <div className={cn(COMPONENT_STYLE_NAME)}>
                 <h1 className={cn(`${COMPONENT_STYLE_NAME}__h1`)}>
-                    {name}
+                   {/* {name}*/}
+                    <MyField onClickSave={this.saveCourseTitle}
+                           onChange={this.onCourseTitleChange}
+                           defaultValue={name}
+                    />
                 </h1>
                 <div className={cn(`${COMPONENT_STYLE_NAME}__data-block`)}>
                     {/*<img src={imgurl} alt="web" className={cn(`${COMPONENT_STYLE_NAME}__img`)}/>*/}
                     <div className={cn(`${COMPONENT_STYLE_NAME}__info`)}>
                         <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}><h4>Информация о курсе:</h4>
-                            {info}
+                            {/*{info}*/}
+                            <MyField onClickSave={this.saveCourseInformation}
+                                     onChange={this.onCourseInformationChange}
+                                     defaultValue={info}
+                            />
                         </div>
                         {Boolean(schedule.length) && (
                             <div className={cn(`${COMPONENT_STYLE_NAME}__item`)}><h4>Время и место
@@ -161,5 +196,6 @@ const mapStateToProps = (state) => ({
 
 export default compose<React.ComponentType>(connect(mapStateToProps, {
     getCourseInfo: getALLCourseInfoThunk,
+    updateCourse: updateCourseThunk,
     updateWeek: updateWeekThunk, sentNotification: sentNotificationThunk
 }), withRouter)(CoursePageView)
